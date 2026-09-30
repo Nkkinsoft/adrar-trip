@@ -1,15 +1,6 @@
-const CACHE_NAME = 'adrar-v2';
-const STATIC_ASSETS = [
-    '/css/design-system.css',
-    '/js/i18n.js',
-    '/js/main.js',
-    '/manifest.json'
-];
+const CACHE_NAME = 'adrar-v3';
 
-self.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_ASSETS))
-    );
+self.addEventListener('install', () => {
     self.skipWaiting();
 });
 
@@ -35,7 +26,17 @@ self.addEventListener('fetch', (event) => {
                 }
                 return response;
             }).catch(() => cached);
-            return cached || fetched;
+
+            if (cached) {
+                return fetched;
+            }
+
+            return fetched.catch(() => {
+                if (request.destination === 'document') {
+                    return caches.match('/index.html');
+                }
+                return new Response('', { status: 404 });
+            });
         })
     );
 });
