@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — Adrar Voyages | Plan Your Moroccan Journey</title>
+    <meta name="description" content="Get in touch with Adrar Voyages to start planning your luxury Moroccan journey. Reach us by email, phone, WhatsApp, or visit our Marrakech office.">
+
+    <link rel="alternate" hreflang="en" href="/en/contact/" />
+    <link rel="alternate" hreflang="fr" href="/fr/contact/" />
+    <link rel="alternate" hreflang="es" href="/es/contact/" />
+    <link rel="alternate" hreflang="ar" href="/ar/contact/" />
+    <link rel="alternate" hreflang="x-default" href="/en/contact/" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../css/design-system.css?v=2">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#c46a35">
+
+    <meta property="og:title" content="Contact Us — Adrar Voyages">
+    <meta property="og:description" content="Let's start planning your Moroccan journey. Reach us by email, phone, or WhatsApp.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+
+    <style>
+        /* Hero */
+        .contact-hero {
+            position: relative;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .contact-hero .hero-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .contact-hero .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10,10,13,0.55) 0%, rgba(10,10,13,0.35) 50%, rgba(10,10,13,0.6) 100%);
+            z-index: 1;
+        }
+        .contact-hero .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 780px;
+            padding: var(--space-16) var(--space-6) var(--space-12);
+        }
+
+        /* Two-column layout */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: var(--space-12);
+            align-items: start;
+        }
+
+        /* Contact form */
+        .contact-form {
+            background: var(--color-surface-elevated);
+            border-radius: var(--radius-xl);
+            padding: var(--space-10);
+            box-shadow: var(--shadow-lg);
+        }
+        .contact-form h2 {
+            font-family: var(--font-serif);
+            font-size: var(--text-3xl);
+            color: var(--charcoal-800);
+            margin-bottom: var(--space-2);
+        }
+        .contact-form > p {
+            color: var(--charcoal-400);
+            margin-bottom: var(--space-8);
+            font-size: var(--text-base);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-5);
+        }
+        .form-group {
+            margin-bottom: var(--space-5);
+        }
+        .form-group label {
+            display: block;
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--charcoal-700);
+            margin-bottom: var(--space-2);
+        }
+        .form-group label .optional {
+            font-weight: 400;
+            color: var(--charcoal-300);
+            font-size: var(--text-xs);
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: var(--space-3) var(--space-4);
+            border: 1.5px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            font-family: var(--font-sans);
+            font-size: var(--text-base);
+            color: var(--charcoal-800);
+            background: var(--color-surface);
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(196, 106, 53, 0.12);
+        }
+        .form-group input.error,
+        .form-group textarea.error {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+        .form-error {
+            font-size: var(--text-xs);
+            color: #dc3545;
+            margin-top: var(--space-1);
+            display: none;
+        }
+        .form-error.visible {
+            display: block;
+        }
+        .form-success {
+            display: none;
+            background: rgba(45, 139, 87, 0.08);
+            border: 1px solid var(--zellige-500);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            text-align: center;
+            color: var(--zellige-600);
+        }
+        .form-success.visible {
+            display: block;
+        }
+        .form-success h3 {
+            font-family: var(--font-serif);
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-2);
+            color: var(--zellige-700);
+        }
+
+        /* Contact info cards */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-5);
+        }
+        .info-card {
+            background: var(--color-surface-elevated);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-4);
+            transition: transform var(--transition-base), box-shadow var(--transition-base);
+        }
+        .info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .info-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .info-card-icon.terracotta {
+            background: rgba(196, 106, 53, 0.1);
+            color: var(--terracotta-600);
+        }
+        .info-card-icon.indigo {
+            background: rgba(53, 78, 150, 0.1);
+            color: var(--indigo-600);
+        }
+        .info-card-icon.zellige {
+            background: rgba(45, 139, 87, 0.1);
+            color: var(--zellige-600);
+        }
+        .info-card-icon.gold {
+            background: rgba(212, 165, 55, 0.1);
+            color: var(--gold-600);
+        }
+        .info-card-icon.warm {
+            background: rgba(196, 153, 98, 0.1);
+            color: var(--warm-600);
+        }
+        .info-card-content h4 {
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: var(--text-base);
+            color: var(--charcoal-800);
+            margin-bottom: var(--space-1);
+        }
+        .info-card-content p,
+        .info-card-content a {
+            font-size: var(--text-sm);
+            color: var(--charcoal-400);
+            line-height: 1.6;
+        }
+        .info-card-content a {
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        .info-card-content a:hover {
+            color: var(--color-primary);
+        }
+        .info-card-content a.whatsapp-link {
+            color: var(--zellige-600);
+            font-weight: 600;
+        }
+        .info-card-content a.whatsapp-link:hover {
+            color: var(--zellige-700);
+        }
+
+        /* Map placeholder */
+        .map-placeholder {
+            width: 100%;
+            height: 360px;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--charcoal-100) 0%, var(--cream-200) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: var(--space-3);
+            border: 1.5px dashed var(--color-border);
+            position: relative;
+        }
+        .map-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c46a35' stroke-width='0.5'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z'/%3E%3Cpath d='M30 10L50 30L30 50L10 30Z'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        .map-placeholder-icon {
+            color: var(--charcoal-300);
+        }
+        .map-placeholder-text {
+            font-weight: 600;
+            color: var(--charcoal-400);
+            font-size: var(--text-lg);
+        }
+        .map-placeholder-sub {
+            font-size: var(--text-sm);
+            color: var(--charcoal-300);
+        }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--color-border);
+        }
+        .faq-item:first-child {
+            border-top: 1px solid var(--color-border);
+        }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: var(--space-6) 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-4);
+            cursor: pointer;
+            text-align: left;
+            font-family: var(--font-sans);
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--charcoal-800);
+            transition: color var(--transition-fast);
+        }
+        .faq-question:hover {
+            color: var(--color-primary);
+        }
+        .faq-question svg {
+            flex-shrink: 0;
+            transition: transform var(--transition-base);
+            color: var(--charcoal-300);
+        }
+        .faq-item.open .faq-question svg {
+            transform: rotate(45deg);
+            color: var(--color-primary);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 400px;
+            padding-bottom: var(--space-6);
+        }
+        .faq-answer p {
+            font-size: var(--text-base);
+            color: var(--charcoal-400);
+            line-height: 1.7;
+        }
+
+        /* CTA */
+        .cta-section {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--charcoal-800) 0%, var(--terracotta-800) 50%, var(--indigo-700) 100%);
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffd354' stroke-width='0.5'%3E%3Cpath d='M50 0L100 50L50 100L0 50Z'/%3E%3Cpath d='M50 15L85 50L50 85L15 50Z'/%3E%3Cpath d='M50 30L70 50L50 70L30 50Z'/%3E%3Ccircle cx='50' cy='50' r='8'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .contact-hero { min-height: 40vh; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .contact-form { padding: var(--space-6); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============ HEADER ============ -->
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a href="/en/" class="logo" aria-label="Adrar Voyages — Home">
+                <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 2L36 14V30L20 38L4 30V14L20 2Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.3"/>
+                    <path d="M20 8L30 16V28L20 34L10 28V16L20 8Z" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.6"/>
+                    <path d="M20 14L25 18V26L20 30L15 26V18L20 14Z" fill="currentColor" opacity="0.8"/>
+                    <circle cx="20" cy="21" r="2" fill="currentColor"/>
+                </svg>
+                <span class="logo-text">ADRAR <span>VOYAGES</span></span>
+            </a>
+
+            <nav class="nav-main" role="navigation" aria-label="Main navigation">
+                <a href="/en/" class="nav-link" data-i18n="nav.home">Home</a>
+                <a href="/en/#destinations" class="nav-link" data-i18n="nav.destinations">Destinations</a>
+                <a href="/en/#experiences" class="nav-link" data-i18n="nav.experiences">Experiences</a>
+                <a href="/en/trip-builder/" class="nav-link" data-i18n="nav.trip-builder">Plan Your Journey</a>
+                <a href="/en/about/" class="nav-link" data-i18n="nav.about">Our Story</a>
+                <a href="/en/journal/" class="nav-link" data-i18n="nav.journal">Journal</a>
+                <a href="/en/sustainability/" class="nav-link" data-i18n="nav.sustainability">Impact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="lang-switcher">
+                    <button class="lang-current" aria-expanded="false" aria-label="Select language">
+                        <span class="lang-native-display">English</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="lang-dropdown" role="listbox">
+                        <button class="lang-option active" data-lang="en" role="option"><span class="lang-native">English</span></button>
+                        <button class="lang-option" data-lang="fr" role="option"><span class="lang-native">Français</span></button>
+                        <button class="lang-option" data-lang="es" role="option"><span class="lang-native">Español</span></button>
+                        <button class="lang-option" data-lang="ar" role="option"><span class="lang-native">العربية</span></button>
+                    </div>
+                </div>
+                <button class="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ MOBILE MENU ============ -->
+    <div class="mobile-menu" role="dialog" aria-label="Mobile navigation">
+        <button class="mobile-menu-close" aria-label="Close menu">&times;</button>
+        <a href="/en/" class="nav-link">Home</a>
+        <a href="/en/#destinations" class="nav-link" data-i18n="nav.destinations">Destinations</a>
+        <a href="/en/#experiences" class="nav-link" data-i18n="nav.experiences">Experiences</a>
+        <a href="/en/trip-builder/" class="nav-link" data-i18n="nav.trip-builder">Plan Your Journey</a>
+        <a href="/en/about/" class="nav-link" data-i18n="nav.about">Our Story</a>
+        <a href="/en/journal/" class="nav-link" data-i18n="nav.journal">Journal</a>
+        <a href="/en/sustainability/" class="nav-link" data-i18n="nav.sustainability">Impact</a>
+        <a href="/en/contact/" class="nav-link" data-i18n="nav.contact">Contact</a>
+    </div>
+
+    <!-- ============ HERO ============ -->
+    <section class="contact-hero" role="banner">
+        <div class="hero-media">
+            <img src="https://images.unsplash.com/photo-1515386474292-47555758ef2e?w=1920&q=80" alt="Stunning Moroccan courtyard with arches and warm light">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow" data-i18n="contact.eyebrow">Get in Touch</div>
+            <h1 class="hero-title" data-i18n="contact.hero-title">Let's Start Planning Your<br>Moroccan Journey</h1>
+            <p class="hero-subtitle" style="color: var(--cream-300); font-size: var(--text-lg); max-width: 600px; margin: var(--space-6) auto 0;" data-i18n="contact.hero-subtitle">Have a question or ready to begin? Our team is here to craft the perfect itinerary for you.</p>
+        </div>
+    </section>
+
+    <!-- ============ CONTACT FORM + INFO ============ -->
+    <section class="section-lg">
+        <div class="container">
+            <div class="contact-grid">
+
+                <!-- LEFT: Contact Form -->
+                <div class="contact-form fade-in" id="contact-form-wrapper">
+                    <h2>Send Us a Message</h2>
+                    <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+
+                    <form id="contact-form" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullname">Full Name</label>
+                                <input type="text" id="fullname" name="fullname" placeholder="Your full name" required>
+                                <div class="form-error" id="fullname-error">Please enter your name.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                                <div class="form-error" id="email-error">Please enter a valid email address.</div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number <span class="optional">(optional)</span></label>
+                                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                            </div>
+                            <div class="form-group">
+                                <label for="travelers">Number of Travelers</label>
+                                <select id="travelers" name="travelers" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="1">1 traveler</option>
+                                    <option value="2">2 travelers</option>
+                                    <option value="3-4">3-4 travelers</option>
+                                    <option value="5-8">5-8 travelers</option>
+                                    <option value="9+">9+ travelers</option>
+                                </select>
+                                <div class="form-error" id="travelers-error">Please select the number of travelers.</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dates">Preferred Travel Dates</label>
+                            <input type="text" id="dates" name="dates" placeholder="e.g. October 2026, or flexible" required>
+                            <div class="form-error" id="dates-error">Please enter your preferred travel dates.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message &amp; Interests</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your dream trip — destinations, experiences, dietary needs, special occasions..." required></textarea>
+                            <div class="form-error" id="message-error">Please tell us about your trip interests.</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-gold btn-lg" style="width: 100%; justify-content: center;">
+                            <span>Send Message</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+                        </button>
+                    </form>
+
+                    <div class="form-success" id="form-success">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--zellige-500); margin-bottom: var(--space-3);"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+                        <h3>Message Sent Successfully!</h3>
+                        <p>Thank you for reaching out. A member of our team will get back to you within 24 hours.</p>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Contact Info Cards -->
+                <div class="contact-info fade-in stagger-2">
+
+                    <!-- Email -->
+                    <div class="info-card">
+                        <div class="info-card-icon terracotta">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+                        </div>
+                        <div class="info-card-content">
+                            <h4>Email</h4>
+                            <a href="mailto:hello@adrarvoyages.ma">hello@adrarvoyages.ma</a>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="info-card">
+                        <div class="info-card-icon indigo">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        </div>
+                        <div class="info-card-content">
+                            <h4>Phone</h4>
+                            <a href="tel:+212524000000">+212 524 XX XX XX</a>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp -->
+                    <div class="info-card">
+                        <div class="info-card-icon zellige">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+                        </div>
+                        <div class="info-card-content">
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/212600000000" class="whatsapp-link" target="_blank" rel="noopener">+212 600 XX XX XX</a>
+                            <p>Chat with us instantly</p>
+                        </div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="info-card">
+                        <div class="info-card-icon gold">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="info-card-content">
+                            <h4>Office</h4>
+                            <p>Rue de la Libert&eacute; 42, Gu&eacute;liz<br>Marrakech 40000, Morocco</p>
+                        </div>
+                    </div>
+
+                    <!-- Office Hours -->
+                    <div class="info-card">
+                        <div class="info-card-icon warm">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        </div>
+                        <div class="info-card-content">
+                            <h4>Office Hours</h4>
+                            <p>Monday &ndash; Saturday<br>9:00 &ndash; 18:00 (GMT+1)</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ MAP PLACEHOLDER ============ -->
+    <section class="section">
+        <div class="container">
+            <div class="map-placeholder fade-in">
+                <div class="map-placeholder-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="map-placeholder-text">Interactive Map</div>
+                <div class="map-placeholder-sub">Rue de la Libert&eacute; 42, Gu&eacute;liz, Marrakech</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section-lg" id="faq">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: var(--space-12);">
+                <div class="text-eyebrow fade-in" style="color: var(--color-primary);">Common Questions</div>
+                <h2 class="heading-display heading-lg fade-in stagger-1" data-i18n="contact.faq-title">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-list">
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How far in advance should I book my trip?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We recommend booking at least 2-3 months in advance for the best availability, especially during peak seasons (March-May and September-November). However, we can often accommodate last-minute requests depending on availability. For luxury riads and exclusive experiences, earlier is always better.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in stagger-1">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Can you accommodate dietary restrictions and special needs?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. Every itinerary is tailored to your needs, including dietary requirements (vegetarian, vegan, gluten-free, halal, kosher, allergies), mobility considerations, and any special celebrations or occasions. Just let us know when you fill out the contact form and we'll handle everything.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in stagger-2">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What is included in a typical Adrar Voyages itinerary?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>All our itineraries include accommodation in hand-picked riads and hotels, private English-speaking guide, ground transportation in comfortable vehicles, curated experiences and excursions, and 24/7 on-trip support. Flights and travel insurance are not included but we can provide recommendations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in stagger-3">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Is Morocco safe for travelers?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Morocco is one of the safest countries in North Africa and welcomes millions of tourists every year. As a local operator, your safety is our top priority. We monitor conditions in real time, our guides are trained in first aid, and we have 24/7 emergency support available throughout your journey.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in stagger-4">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What is your cancellation and refund policy?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We offer flexible cancellation up to 60 days before departure with a full refund (minus a small administrative fee). Cancellations between 59-30 days receive a 50% refund or full credit toward a future trip. Within 30 days, we offer credit for rebooking within 12 months. Detailed terms are provided at the time of booking.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CTA SECTION ============ -->
+    <section class="cta-section section-lg">
+        <div class="container" style="position: relative; z-index: 1; text-align: center; max-width: 720px;">
+            <div class="text-eyebrow fade-in" style="color: var(--gold-400);">Begin Your Story</div>
+            <h2 class="heading-display heading-lg fade-in stagger-1" style="margin-top: var(--space-4); color: #fff;" data-i18n="cta.title">Your Morocco Story<br>Starts Here</h2>
+            <p class="text-body-lg fade-in stagger-2" style="margin-top: var(--space-6); color: var(--cream-300);" data-i18n="cta.subtitle">Let our experts craft a journey as unique as you are. No templates, no compromises — just Morocco at its finest.</p>
+            <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; margin-top: var(--space-10);" class="fade-in stagger-3">
+                <a href="/en/trip-builder/" class="btn btn-gold btn-lg" data-i18n="cta.button">Start Planning</a>
+                <a href="/en/sustainability/" class="btn btn-secondary btn-lg" data-i18n="nav.sustainability">Our Impact</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/en/" class="logo" style="margin-bottom: var(--space-2);">
+                        <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: var(--gold-400);">
+                            <path d="M20 2L36 14V30L20 38L4 30V14L20 2Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.3"/>
+                            <path d="M20 8L30 16V28L20 34L10 28V16L20 8Z" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.6"/>
+                            <path d="M20 14L25 18V26L20 30L15 26V18L20 14Z" fill="currentColor" opacity="0.8"/>
+                            <circle cx="20" cy="21" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="logo-text" style="color: var(--cream-100);">ADRAR <span style="color: var(--gold-400);">VOYAGES</span></span>
+                    </a>
+                    <p data-i18n="footer.tagline">Crafting extraordinary Moroccan journeys since 2003. A local operator with global standards of excellence.</p>
+                    <div class="footer-social" style="margin-top: var(--space-6);">
+                        <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg></a>
+                        <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                        <a href="#" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75,15.02 15.5,11.75 9.75,8.48" fill="#1e1e24"/></svg></a>
+                        <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 2a2 2 0 110 4 2 2 0 010-4z"/></svg></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading" data-i18n="footer.explore">Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="/en/#destinations" data-i18n="nav.destinations">Destinations</a></li>
+                        <li><a href="/en/#experiences" data-i18n="nav.experiences">Experiences</a></li>
+                        <li><a href="/en/trip-builder/" data-i18n="nav.trip-builder">Plan Your Journey</a></li>
+                        <li><a href="/en/journal/" data-i18n="nav.journal">Journal</a></li>
+                        <li><a href="/en/sustainability/" data-i18n="nav.sustainability">Impact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading" data-i18n="footer.company">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="/en/about/" data-i18n="footer.about">About Us</a></li>
+                        <li><a href="/en/about/#careers">Careers</a></li>
+                        <li><a href="/en/about/#press">Press</a></li>
+                        <li><a href="/en/about/#partners">Partner With Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading" data-i18n="footer.support">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="/en/contact/" data-i18n="nav.contact">Contact</a></li>
+                        <li><a href="/en/contact/#faq" data-i18n="footer.faq">FAQ</a></li>
+                        <li><a href="/en/privacy/" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="/en/terms/" data-i18n="footer.terms">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span data-i18n="footer.copyright">&copy; 2026 Adrar Voyages. All rights reserved.</span>
+                <span>Made with &hearts; in Marrakech</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============ CONCIERGE FAB ============ -->
+    <button class="concierge-fab" aria-label="Chat with concierge">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <span class="whatsapp-badge">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+        </span>
+    </button>
+
+    <!-- ============ SCRIPTS ============ -->
+    <script src="../../js/i18n.js"></script>
+    <script src="../../js/main.js?v=2"></script>
+    <script src="../../js/features.js"></script>
+
+    <!-- Page-specific: FAQ accordion + Form validation -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // ---- FAQ Accordion ----
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const btn = item.querySelector('.faq-question');
+            btn.addEventListener('click', () => {
+                const isOpen = item.classList.contains('open');
+                // Close all
+                faqItems.forEach(i => {
+                    i.classList.remove('open');
+                    i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+                // Toggle current
+                if (!isOpen) {
+                    item.classList.add('open');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        // ---- Form Validation ----
+        const form = document.getElementById('contact-form');
+        const successMsg = document.getElementById('form-success');
+
+        function showError(fieldId, errorId) {
+            const field = document.getElementById(fieldId);
+            const error = document.getElementById(errorId);
+            field.classList.add('error');
+            error.classList.add('visible');
+        }
+
+        function clearError(fieldId, errorId) {
+            const field = document.getElementById(fieldId);
+            const error = document.getElementById(errorId);
+            field.classList.remove('error');
+            error.classList.remove('visible');
+        }
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        // Clear errors on input
+        ['fullname', 'email', 'dates', 'message'].forEach(id => {
+            const el = document.getElementById(id);
+            el.addEventListener('input', () => clearError(id, id + '-error'));
+        });
+        document.getElementById('travelers').addEventListener('change', () => clearError('travelers', 'travelers-error'));
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let valid = true;
+
+            // Full Name
+            const fullname = document.getElementById('fullname').value.trim();
+            if (!fullname) {
+                showError('fullname', 'fullname-error');
+                valid = false;
+            } else {
+                clearError('fullname', 'fullname-error');
+            }
+
+            // Email
+            const email = document.getElementById('email').value.trim();
+            if (!email || !isValidEmail(email)) {
+                showError('email', 'email-error');
+                valid = false;
+            } else {
+                clearError('email', 'email-error');
+            }
+
+            // Number of Travelers
+            const travelers = document.getElementById('travelers').value;
+            if (!travelers) {
+                showError('travelers', 'travelers-error');
+                valid = false;
+            } else {
+                clearError('travelers', 'travelers-error');
+            }
+
+            // Travel Dates
+            const dates = document.getElementById('dates').value.trim();
+            if (!dates) {
+                showError('dates', 'dates-error');
+                valid = false;
+            } else {
+                clearError('dates', 'dates-error');
+            }
+
+            // Message
+            const message = document.getElementById('message').value.trim();
+            if (!message) {
+                showError('message', 'message-error');
+                valid = false;
+            } else {
+                clearError('message', 'message-error');
+            }
+
+            if (valid) {
+                // Hide form, show success
+                form.style.display = 'none';
+                successMsg.classList.add('visible');
+                // Scroll to success message
+                successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                // Scroll to first error
+                const firstError = form.querySelector('.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstError.focus();
+                }
+            }
+        });
+    });
+    </script>
+</body>
+</html>

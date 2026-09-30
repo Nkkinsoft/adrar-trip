@@ -1,0 +1,21 @@
+# Preserve original line endings
+* text=auto
+
+# CSS must stay LF
+*.css text eol=lf
+
+# HTML stays CRLF (original)
+*.html text eol=crlf
+
+# JS stays LF
+*.js text eol=lf
+
+# JSON stays LF
+*.json text eol=lf
+
+# Binary
+*.png binary
+*.ico binary
+*.jpg binary
+*.jpeg binary
+*.svg text eol=lf

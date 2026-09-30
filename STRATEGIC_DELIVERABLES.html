@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrar Voyages — Strategic Deliverables</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: #2d3748;
+            background: #f7fafc;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #c46a35 100%);
+            color: white;
+            padding: 60px 50px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .content {
+            padding: 50px;
+        }
+        section {
+            margin-bottom: 50px;
+        }
+        h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 32px;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #c46a35;
+        }
+        h3 {
+            font-size: 22px;
+            color: #2d3748;
+            margin: 28px 0 14px;
+        }
+        h4 {
+            font-size: 18px;
+            color: #c46a35;
+            margin: 20px 0 10px;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 14px;
+            font-size: 16px;
+        }
+        ul, ol {
+            margin: 14px 0 14px 24px;
+        }
+        li {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .phase-box {
+            background: #f7fafc;
+            border-left: 4px solid #c46a35;
+            padding: 20px 24px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+        .phase-box h4 {
+            margin-top: 0;
+            color: #c46a35;
+        }
+        .conversion-path {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+        .conversion-path h4 {
+            color: #1a1a2e;
+            margin-top: 0;
+        }
+        .metric {
+            display: inline-block;
+            background: #c46a35;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        .sitemap-tree {
+            background: #1a1a2e;
+            color: #f7fafc;
+            padding: 24px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+        .sitemap-tree .level-1 { margin-left: 0; color: #c46a35; font-weight: 600; }
+        .sitemap-tree .level-2 { margin-left: 20px; color: #d4a853; }
+        .sitemap-tree .level-3 { margin-left: 40px; color: #a0aec0; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 15px;
+        }
+        th {
+            background: #1a1a2e;
+            color: white;
+            padding: 14px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        tr:nth-child(even) {
+            background: #f7fafc;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #c46a35 0%, #d4a853 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 8px;
+            margin: 24px 0;
+        }
+        .highlight-box h4 {
+            color: white;
+            margin-top: 0;
+        }
+        .footer {
+            background: #1a1a2e;
+            color: #a0aec0;
+            padding: 30px 50px;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>Adrar Voyages</h1>
+            <p>Strategic Deliverables & Implementation Roadmap</p>
+        </div>
+
+        <div class="content">
+            <!-- SECTION 1: SITE ARCHITECTURE -->
+            <section>
+                <h2>1. Site Architecture & Sitemap</h2>
+                <p>The Adrar Voyages website follows a hierarchical structure optimized for both user experience and SEO. The architecture supports 4 languages (EN/FR/ES/AR) with full RTL support for Arabic and proper hreflang implementation.</p>
+
+                <div class="sitemap-tree">
+                    <div class="level-1">/ (Root Redirect — Language Detection)</div>
+                    <div class="level-1">/en/ (English Homepage)</div>
+                    <div class="level-2">/en/destinations/</div>
+                    <div class="level-3">Imperial Cities (Fes, Marrakech, Meknes, Rabat)</div>
+                    <div class="level-3">Sahara Desert (Erg Chebbi, Erg Chigaga)</div>
+                    <div class="level-3">Atlas Mountains (Toubkal, Ourika, Imlil)</div>
+                    <div class="level-3">Atlantic Coast (Essaouira, Taghazout)</div>
+                    <div class="level-2">/en/experiences/</div>
+                    <div class="level-3">Luxury Desert Camps</div>
+                    <div class="level-3">Culinary Journeys</div>
+                    <div class="level-3">Cultural Immersion</div>
+                    <div class="level-3">Adventure & Trekking</div>
+                    <div class="level-3">Wellness & Spirituality</div>
+                    <div class="level-2">/en/trip-builder/ (AI Trip Architect)</div>
+                    <div class="level-2">/en/about/ (Our Story)</div>
+                    <div class="level-2">/en/journal/ (Travel Stories)</div>
+                    <div class="level-2">/en/sustainability/ (Impact Dashboard)</div>
+                    <div class="level-2">/en/contact/</div>
+                    <div class="level-1">/fr/ (French — Mirror Structure)</div>
+                    <div class="level-1">/es/ (Spanish — Mirror Structure)</div>
+                    <div class="level-1">/ar/ (Arabic RTL — Mirror Structure)</div>
+                </div>
+
+                <h3>Technical Architecture</h3>
+                <ul>
+                    <li><strong>Static HTML + CSS + Vanilla JS</strong> — No framework dependencies, maximum performance</li>
+                    <li><strong>Design System</strong> — Centralized CSS custom properties (tokens) for colors, typography, spacing</li>
+                    <li><strong>i18n System</strong> — JavaScript-driven DOM translation with data-i18n attributes (~80 keys per language)</li>
+                    <li><strong>PWA</strong> — Service worker with cache-first strategy, manifest.json for installability</li>
+                    <li><strong>SEO</strong> — Hreflang tags, JSON-LD structured data (TravelAgency schema), semantic HTML</li>
+                    <li><strong>Accessibility</strong> — WCAG 2.1 AA compliant, prefers-reduced-motion support, ARIA labels</li>
+                </ul>
+            </section>
+
+            <!-- SECTION 2: FEATURE PRIORITIZATION -->
+            <section>
+                <h2>2. Feature Prioritization (MVP vs Phase 2)</h2>
+                <p>Features are prioritized based on user impact, implementation complexity, and business value. The MVP focuses on core conversion drivers, while Phase 2 introduces advanced differentiators.</p>
+
+                <div class="phase-box">
+                    <h4>MVP (Launch-Ready) — Implemented</h4>
+                    <ul>
+                        <li><span class="metric">HIGH IMPACT</span> <strong>AI Trip Architect</strong> — Multi-step conversational builder with interest/duration/budget/style inputs. Generates personalized itinerary recommendations. <em>Conversion driver: reduces decision friction, increases engagement time.</em></li>
+                        <li><span class="metric">HIGH IMPACT</span> <strong>Concierge Chat Widget</strong> — Floating FAB on every page. Opens WhatsApp integration for instant human connection. Fallback to AI chatbot if WhatsApp unavailable. <em>Trust builder: reduces pre-booking anxiety, answers questions in real-time.</em></li>
+                        <li><span class="metric">MEDIUM IMPACT</span> <strong>Seasonal Offers</strong> — Auto-detects current season and displays curated journeys timed to Morocco's best travel windows. <em>Urgency driver: creates time-sensitive motivation to book.</em></li>
+                        <li><span class="metric">MEDIUM IMPACT</span> <strong>Live Availability Indicators</strong> — Scarcity badges on experience/destination cards (e.g., "Only 3 spots left"). <em>Conversion driver: FOMO effect, encourages faster decisions.</em></li>
+                        <li><span class="metric">FOUNDATIONAL</span> <strong>Full i18n (4 languages)</strong> — English, French, Spanish, Arabic with RTL support. <em>Market expansion: reaches key source markets for Morocco tourism.</em></li>
+                        <li><span class="metric">FOUNDATIONAL</span> <strong>Responsive Design</strong> — Mobile-first, works flawlessly on all devices. <em>60%+ of travel research happens on mobile.</em></li>
+                        <li><span class="metric">FOUNDATIONAL</span> <strong>PWA + Offline Support</strong> — Installable app, works offline with cached content. <em>Engagement: users can browse itineraries even without connectivity (e.g., during flights).</em></li>
+                    </ul>
+                </div>
+
+                <div class="phase-box">
+                    <h4>Phase 2 (Post-Launch Enhancements)</h4>
+                    <ul>
+                        <li><span class="metric">DIFFERENTIATOR</span> <strong>360° Destination Previews</strong> — Interactive panoramic views of key locations (Marrakech medina, Sahara dunes, Atlas villages). Requires 360° photography assets or Matterport integration. <em>Immersion: helps users visualize the experience, reduces uncertainty.</em></li>
+                        <li><span class="metric">DIFFERENTIATOR</span> <strong>Sustainability Score Dashboard</strong> — Animated SVG gauge showing each trip's environmental and social impact score (A+ to B-). Requires backend calculation engine based on local spending ratio, carbon footprint, community employment. <em>Values alignment: appeals to conscious travelers, differentiates from competitors.</em></li>
+                        <li><span class="metric">DIFFERENTIATOR</span> <strong>Group Planning Tool</strong> — Shareable itinerary builder where multiple travelers can vote on preferences, split costs, coordinate schedules. Requires backend + real-time collaboration (WebSockets). <em>Social proof: makes group travel planning frictionless, increases booking size.</em></li>
+                        <li><span class="metric">ENHANCEMENT</span> <strong>Video Testimonials</strong> — Embedded video player with customer stories, integrated into homepage and experience pages. Requires video production assets. <em>Social proof: builds trust through authentic user-generated content.</em></li>
+                        <li><span class="metric">ENHANCEMENT</span> <strong>Post-Booking Digital Companion</strong> — Personalized trip app with offline maps, phrasebook, cultural tips, emergency contacts. Requires native app development or PWA enhancement. <em>Retention: extends engagement beyond booking, reduces on-trip anxiety.</em></li>
+                        <li><span class="metric">ENHANCEMENT</span> <strong>Dynamic Pricing Engine</strong> — Real-time price adjustments based on demand, seasonality, availability. Requires integration with booking system and pricing rules. <em>Revenue optimization: maximizes yield without manual intervention.</em></li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 3: CONVERSION PATH RECOMMENDATIONS -->
+            <section>
+                <h2>3. Conversion Path Recommendations</h2>
+                <p>The website is designed to guide users through a clear conversion funnel: <strong>Discovery → Exploration → Consideration → Booking</strong>. Below are strategic recommendations to optimize each stage.</p>
+
+                <div class="conversion-path">
+                    <h4>Stage 1: Discovery (Homepage)</h4>
+                    <p><strong>Goal:</strong> Capture attention, communicate brand promise, guide to next step.</p>
+                    <ul>
+                        <li><strong>Hero Section</strong> — Cinematic video background (Sahara sunrise, medina life) with clear value proposition: "Where the Sahara meets the soul." Primary CTA: "Design Your Journey" (links to Trip Builder).</li>
+                        <li><strong>Social Proof</strong> — Trust badges below hero: "500+ Travelers," "5.0 Rating," "Local Experts." Reduces skepticism immediately.</li>
+                        <li><strong>Destination Showcase</strong> — Grid of 5 key destinations with high-quality imagery. Each card links to destination detail page. <em>Recommendation: Add hover effect showing 1-sentence highlight (e.g., "Fes: 9,000 alleyways, 11th-century tanneries").</em></li>
+                        <li><strong>Seasonal Offers</strong> — Time-sensitive section promoting current season's journeys. <em>Recommendation: Add countdown timer for limited-time offers to increase urgency.</em></li>
+                    </ul>
+                </div>
+
+                <div class="conversion-path">
+                    <h4>Stage 2: Exploration (Destinations & Experiences)</h4>
+                    <p><strong>Goal:</strong> Deepen interest, help users self-select, build emotional connection.</p>
+                    <ul>
+                        <li><strong>Mood-Based Filtering</strong> — On experiences page, allow users to filter by travel style (Romantic, Adventurous, Spiritual, Foodie, etc.). <em>Reduces choice overload, helps users find their perfect trip faster.</em></li>
+                        <li><strong>Live Availability</strong> — Scarcity indicators on experience cards (e.g., "Only 2 spots left"). <em>Recommendation: Make low-availability items more visually prominent (e.g., red badge, pulse animation).</em></li>
+                        <li><strong>360° Previews (Phase 2)</strong> — On destination cards, add "360° View" button that opens immersive panorama. <em>Recommendation: Prioritize Sahara and Marrakech — highest emotional impact.</em></li>
+                        <li><strong>Related Experiences</strong> — On each destination page, show 3-4 curated experiences specific to that location. <em>Cross-sell: increases average order value.</em></li>
+                    </ul>
+                </div>
+
+                <div class="conversion-path">
+                    <h4>Stage 3: Consideration (Trip Builder)</h4>
+                    <p><strong>Goal:</strong> Convert interest into intent, generate personalized recommendation.</p>
+                    <ul>
+                        <li><strong>AI Trip Architect</strong> — Multi-step conversational flow: interests → duration → budget → travel style. Generates custom itinerary in <60 seconds. <em>Key: Make it feel effortless, not like a form.</em></li>
+                        <li><strong>Group Planning (Phase 2)</strong> — After generating itinerary, offer "Share with friends" button. Creates shareable link where group members can vote on preferences. <em>Viral loop: increases reach and booking size.</em></li>
+                        <li><strong>Concierge Chat</strong> — Floating FAB always visible. If user hesitates (e.g., spends >2 min on Trip Builder without completing), proactively offer help: "Need help designing your trip? Chat with a local expert." <em>Intervention: reduces abandonment.</em></li>
+                        <li><strong>Sustainability Score (Phase 2)</strong> — On generated itinerary, show environmental/social impact score. <em>Differentiator: appeals to values-driven travelers, justifies premium pricing.</em></li>
+                    </ul>
+                </div>
+
+                <div class="conversion-path">
+                    <h4>Stage 4: Booking (Contact & WhatsApp)</h4>
+                    <p><strong>Goal:</strong> Remove final friction, connect user with human expert.</p>
+                    <ul>
+                        <li><strong>Primary CTA</strong> — On Trip Builder results and experience pages: "Book Now" or "Chat with Expert" (opens WhatsApp). <em>Recommendation: A/B test "Book Now" vs "Start My Journey" — latter feels less transactional.</em></li>
+                        <li><strong>WhatsApp Integration</strong> — Pre-filled message with trip details (destination, dates, group size). <em>Reduces friction: user doesn't have to re-explain their interest.</em></li>
+                        <li><strong>Trust Signals</strong> — On contact page: testimonials, partner logos (National Geographic, Condé Nast), team photos. <em>Humanizes brand, builds trust.</em></li>
+                        <li><strong>Response Time Promise</strong> — "We respond within 2 hours" badge near WhatsApp button. <em>Manages expectations, reduces anxiety.</em></li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Key Conversion Metrics to Track</h4>
+                    <ul style="margin-top: 12px;">
+                        <li><strong>Trip Builder Completion Rate</strong> — % of users who start vs finish the AI builder. Target: >60%.</li>
+                        <li><strong>WhatsApp Click-Through Rate</strong> — % of users who click concierge FAB and initiate chat. Target: >15%.</li>
+                        <li><strong>Seasonal Offers Engagement</strong> — % of homepage visitors who scroll to seasonal section. Target: >40%.</li>
+                        <li><strong>Multi-Language Usage</strong> — % of users who switch languages. Indicates market fit. Target: >25% non-English.</li>
+                        <li><strong>Mobile vs Desktop Conversion</strong> — Compare booking rates. Optimize mobile if lagging.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 4: ADDITIONAL INNOVATIVE IDEAS -->
+            <section>
+                <h2>4. Additional Innovative Ideas</h2>
+                <p>Beyond the implemented features, here are forward-thinking concepts that could further differentiate Adrar Voyages in the luxury travel market.</p>
+
+                <h3>A. Pre-Trip Engagement</h3>
+                <ul>
+                    <li><strong>Virtual Morocco Workshop</strong> — Live Zoom sessions before booking: Moroccan cooking class, Arabic calligraphy, Amazigh music performance. <em>Builds emotional connection, creates memorable brand touchpoint.</em></li>
+                    <li><strong>Personalized Video Message</strong> — After Trip Builder, send user a 60-second video from a local guide: "Hi [Name], I can't wait to show you the hidden riads of Fes..." <em>Humanizes brand, increases conversion.</em></li>
+                    <li><strong>Travel Style Quiz</strong> — Interactive quiz (5 questions) that recommends destinations/experiences based on personality. Shareable on social media. <em>Viral potential, lead generation.</em></li>
+                </ul>
+
+                <h3>B. On-Trip Enhancements</h3>
+                <ul>
+                    <li><strong>AR Cultural Guide</strong> — Augmented reality app that overlays historical context when user points phone at landmarks (e.g., Ben Youssef Madrasa). <em>Adds educational layer, deepens experience.</em></li>
+                    <li><strong>Real-Time Translation</strong> — In-app feature that translates Darija/Amazigh phrases to user's language. Helps with market haggling, conversations with locals. <em>Practical utility, reduces language anxiety.</em></li>
+                    <li><strong>Digital Journal</strong> — Auto-generated trip journal with photos, locations, stories. User can export as PDF or share on social media. <em>Creates shareable content, extends brand reach.</em></li>
+                </ul>
+
+                <h3>C. Post-Trip Retention</h3>
+                <ul>
+                    <li><strong>Alumni Community</strong> — Private Facebook group or platform for Adrar travelers to share stories, photos, tips. <em>Builds community, generates user-generated content.</em></li>
+                    <li><strong>Anniversary Reminders</strong> — 1 year after trip, send personalized email: "Remember your Sahara sunset? Here's a return offer." <em>Drives repeat bookings, shows care.</em></li>
+                    <li><strong>Referral Program</strong> — Give €100 credit for every friend who books. <em>Leverages word-of-mouth, reduces acquisition cost.</em></li>
+                </ul>
+
+                <h3>D. Operational Innovation</h3>
+                <ul>
+                    <li><strong>AI-Powered Itinerary Optimization</strong> — Machine learning algorithm that analyzes past trips, weather, crowd levels, and suggests optimal day-by-day schedules. <em>Maximizes experience quality, reduces logistical friction.</em></li>
+                    <li><strong>Dynamic Local Guide Matching</strong> — Algorithm matches travelers with guides based on shared interests (e.g., photography, history, food). <em>Personalization, creates deeper connections.</em></li>
+                    <li><strong>Carbon Offset Marketplace</strong> — Allow users to purchase verified carbon offsets for their flight + trip. Show impact: "Your €50 offset plants 10 trees in the Atlas." <em>Appeals to eco-conscious travelers, reinforces sustainability brand.</em></li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Competitive Differentiation</h4>
+                    <p style="margin-top: 12px;">Adrar Voyages is positioned to outcompete intrepid, Abercrombie & Kent, and Vita Morocco through:</p>
+                    <ul style="margin-top: 12px;">
+                        <li><strong>Technology-First Approach</strong> — AI Trip Builder, PWA, multilingual support. Competitors rely on PDF brochures and generic contact forms.</li>
+                        <li><strong>Radical Transparency</strong> — Sustainability scores, local impact metrics. Competitors make vague "responsible travel" claims without data.</li>
+                        <li><strong>Cultural Depth</strong> — Amazigh guides, hidden riads, artisan workshops. Competitors offer surface-level "cultural experiences."</li>
+                        <li><strong>Personalization at Scale</strong> — AI + human expert hybrid model. Competitors are either fully automated (impersonal) or fully manual (expensive).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 5: IMPLEMENTATION ROADMAP -->
+            <section>
+                <h2>5. Implementation Roadmap</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Phase</th>
+                            <th>Timeline</th>
+                            <th>Deliverables</th>
+                            <th>Success Metrics</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Phase 1: MVP Launch</strong></td>
+                            <td>Now (Complete)</td>
+                            <td>
+                                <ul style="margin: 0;">
+                                    <li>Full website (4 languages)</li>
+                                    <li>AI Trip Builder</li>
+                                    <li>Concierge Chat</li>
+                                    <li>Seasonal Offers</li>
+                                    <li>Live Availability</li>
+                                    <li>PWA + Offline</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="margin: 0;">
+                                    <li>Trip Builder completion >60%</li>
+                                    <li>WhatsApp CTR >15%</li>
+                                    <li>Mobile traffic >50%</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Phase 2: Content & Assets</strong></td>
+                            <td>Month 1-2</td>
+                            <td>
+                                <ul style="margin: 0;">
+                                    <li>Professional photography (replace Unsplash)</li>
+                                    <li>Video testimonials (3-5 stories)</li>
+                                    <li>360° panoramas (Sahara, Marrakech)</li>
+                                    <li>Blog content (10 journal articles)</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="margin: 0;">
+                                    <li>Time on site +30%</li>
+                                    <li>Bounce rate -20%</li>
+                                    <li>Social shares +50%</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Phase 3: Advanced Features</strong></td>
+                            <td>Month 3-4</td>
+                            <td>
+                                <ul style="margin: 0;">
+                                    <li>360° Preview integration</li>
+                                    <li>Sustainability Score Dashboard</li>
+                                    <li>Group Planning Tool</li>
+                                    <li>Dynamic Pricing Engine</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="margin: 0;">
+                                    <li>Avg order value +15%</li>
+                                    <li>Group bookings +25%</li>
+                                    <li>Repeat visitors +40%</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Phase 4: Optimization</strong></td>
+                            <td>Month 5-6</td>
+                            <td>
+                                <ul style="margin: 0;">
+                                    <li>A/B testing (CTAs, pricing display)</li>
+                                    <li>Personalization engine (return visitors)</li>
+                                    <li>Post-booking digital companion app</li>
+                                    <li>Referral program launch</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul style="margin: 0;">
+                                    <li>Conversion rate +20%</li>
+                                    <li>Referral bookings >10%</li>
+                                    <li>NPS score >70</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+
+        <div class="footer">
+            <p>Adrar Voyages — Strategic Deliverables</p>
+            <p>Prepared: September 2026 | Version 1.0</p>
+        </div>
+    </div>
+</body>
+</html>

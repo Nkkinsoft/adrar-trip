@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainability & Impact — Adrar Voyages | Travel That Gives Back</title>
+    <meta name="description" content="Discover how Adrar Voyages is committed to sustainable tourism in Morocco. Read our impact report, learn about our three pillars, and see how your travels give back.">
+
+    <link rel="alternate" hreflang="en" href="/en/sustainability/" />
+    <link rel="alternate" hreflang="fr" href="/fr/sustainability/" />
+    <link rel="alternate" hreflang="es" href="/es/sustainability/" />
+    <link rel="alternate" hreflang="ar" href="/ar/sustainability/" />
+    <link rel="alternate" hreflang="x-default" href="/en/sustainability/" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../css/design-system.css?v=2">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#c46a35">
+
+    <meta property="og:title" content="Sustainability & Impact — Adrar Voyages">
+    <meta property="og:description" content="Travel that gives back. See how every Adrar journey contributes to communities, the environment, and cultural preservation in Morocco.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+
+    <style>
+        /* Hero */
+        .sust-hero {
+            position: relative;
+            min-height: 55vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .sust-hero .hero-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .sust-hero .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10,10,13,0.5) 0%, rgba(10,10,13,0.3) 50%, rgba(10,10,13,0.55) 100%);
+            z-index: 1;
+        }
+        .sust-hero .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 780px;
+            padding: var(--space-16) var(--space-6) var(--space-12);
+        }
+
+        /* Impact dashboard */
+        .impact-dashboard {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-6);
+        }
+        .impact-dashboard .impact-stat {
+            background: var(--color-surface-elevated);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            padding: var(--space-10) var(--space-6);
+        }
+        .impact-dashboard .impact-number {
+            font-family: var(--font-serif);
+            font-size: var(--text-5xl);
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1;
+            margin-bottom: var(--space-2);
+        }
+        .impact-dashboard .impact-label {
+            font-size: var(--text-sm);
+            color: var(--color-text-secondary);
+            line-height: var(--leading-normal);
+        }
+        @media (max-width: 768px) {
+            .impact-dashboard { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* Pillar cards */
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-8);
+        }
+        .pillar-card {
+            background: var(--color-surface-elevated);
+            border-radius: var(--radius-xl);
+            padding: var(--space-10) var(--space-8);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: all var(--transition-base);
+            border-top: 4px solid transparent;
+        }
+        .pillar-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+        .pillar-card:nth-child(1) { border-top-color: var(--terracotta-500); }
+        .pillar-card:nth-child(2) { border-top-color: var(--zellige-500); }
+        .pillar-card:nth-child(3) { border-top-color: var(--indigo-500); }
+        .pillar-icon {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto var(--space-6);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-2xl);
+        }
+        .pillar-card:nth-child(1) .pillar-icon { background: var(--terracotta-50); color: var(--terracotta-600); }
+        .pillar-card:nth-child(2) .pillar-icon { background: var(--zellige-50); color: var(--zellige-600); }
+        .pillar-card:nth-child(3) .pillar-icon { background: var(--indigo-50); color: var(--indigo-500); }
+        .pillar-title {
+            font-family: var(--font-serif);
+            font-size: var(--text-xl);
+            font-weight: 700;
+            margin-bottom: var(--space-3);
+        }
+        .pillar-desc {
+            font-size: var(--text-sm);
+            color: var(--color-text-secondary);
+            line-height: var(--leading-relaxed);
+            margin-bottom: var(--space-4);
+        }
+        .pillar-highlights {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+            text-align: left;
+        }
+        .pillar-highlights li {
+            font-size: var(--text-sm);
+            color: var(--charcoal-500);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-2);
+        }
+        .pillar-highlights li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: var(--radius-full);
+            flex-shrink: 0;
+            margin-top: 7px;
+        }
+        .pillar-card:nth-child(1) .pillar-highlights li::before { background: var(--terracotta-400); }
+        .pillar-card:nth-child(2) .pillar-highlights li::before { background: var(--zellige-400); }
+        .pillar-card:nth-child(3) .pillar-highlights li::before { background: var(--indigo-400); }
+        @media (max-width: 768px) {
+            .pillar-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Sustainability Scores */
+        .score-explanation {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-12);
+            align-items: center;
+        }
+        .score-scale {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+        .score-row {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            background: var(--color-surface-elevated);
+            box-shadow: var(--shadow-sm);
+        }
+        .score-badge {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: var(--text-sm);
+            flex-shrink: 0;
+        }
+        .score-badge.a-plus { background: var(--zellige-100); color: var(--zellige-700); }
+        .score-badge.a { background: var(--zellige-50); color: var(--zellige-600); }
+        .score-badge.b-plus { background: var(--gold-100); color: var(--gold-700); }
+        .score-badge.b { background: var(--sand-200); color: var(--sand-700); }
+        .score-badge.c { background: var(--charcoal-50); color: var(--charcoal-400); }
+        .score-row-label {
+            font-size: var(--text-sm);
+            color: var(--charcoal-500);
+        }
+        .score-row-label strong {
+            color: var(--charcoal-700);
+        }
+        @media (max-width: 768px) {
+            .score-explanation { grid-template-columns: 1fr; }
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: var(--space-12);
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--zellige-400), var(--gold-400), var(--terracotta-400));
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: var(--space-10);
+        }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-dot {
+            position: absolute;
+            left: calc(var(--space-12) * -1 + 12px);
+            top: 4px;
+            width: 18px;
+            height: 18px;
+            border-radius: var(--radius-full);
+            background: var(--color-surface-elevated);
+            border: 3px solid var(--zellige-500);
+            z-index: 1;
+        }
+        .timeline-item:nth-child(even) .timeline-dot { border-color: var(--gold-500); }
+        .timeline-item:nth-child(3n) .timeline-dot { border-color: var(--terracotta-500); }
+        .timeline-year {
+            font-family: var(--font-serif);
+            font-size: var(--text-xl);
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: var(--space-1);
+        }
+        .timeline-text {
+            font-size: var(--text-sm);
+            color: var(--color-text-secondary);
+            line-height: var(--leading-relaxed);
+        }
+        .timeline-text strong {
+            color: var(--charcoal-600);
+        }
+
+        /* Impact report download */
+        .report-download {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-6);
+            background: var(--zellige-50);
+            border: 1px solid var(--zellige-200);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8) var(--space-10);
+        }
+        .report-download-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: var(--radius-full);
+            background: var(--zellige-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        @media (max-width: 640px) {
+            .report-download {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* CTA */
+        .cta-section {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--charcoal-800) 0%, var(--terracotta-800) 50%, var(--indigo-700) 100%);
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffd354' stroke-width='0.5'%3E%3Cpath d='M50 0L100 50L50 100L0 50Z'/%3E%3Cpath d='M50 15L85 50L50 85L15 50Z'/%3E%3Cpath d='M50 30L70 50L50 70L30 50Z'/%3E%3Ccircle cx='50' cy='50' r='8'/%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============ HEADER ============ -->
+    <header class="site-header" role="banner">
+        <div class="header-inner">
+            <a href="/en/" class="logo" aria-label="Adrar Voyages — Home">
+                <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 2L36 14V30L20 38L4 30V14L20 2Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.3"/>
+                    <path d="M20 8L30 16V28L20 34L10 28V16L20 8Z" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.6"/>
+                    <path d="M20 14L25 18V26L20 30L15 26V18L20 14Z" fill="currentColor" opacity="0.8"/>
+                    <circle cx="20" cy="21" r="2" fill="currentColor"/>
+                </svg>
+                <span class="logo-text">ADRAR <span>VOYAGES</span></span>
+            </a>
+
+            <nav class="nav-main" role="navigation" aria-label="Main navigation">
+                <a href="/en/" class="nav-link" data-i18n="nav.home">Home</a>
+                <a href="/en/#destinations" class="nav-link" data-i18n="nav.destinations">Destinations</a>
+                <a href="/en/#experiences" class="nav-link" data-i18n="nav.experiences">Experiences</a>
+                <a href="/en/trip-builder/" class="nav-link" data-i18n="nav.trip-builder">Plan Your Journey</a>
+                <a href="/en/about/" class="nav-link" data-i18n="nav.about">Our Story</a>
+                <a href="/en/journal/" class="nav-link" data-i18n="nav.journal">Journal</a>
+                <a href="/en/sustainability/" class="nav-link" data-i18n="nav.sustainability">Impact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="lang-switcher">
+                    <button class="lang-current" aria-expanded="false" aria-label="Select language">
+                        <span class="lang-native-display">English</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="lang-dropdown" role="listbox">
+                        <button class="lang-option active" data-lang="en" role="option"><span class="lang-native">English</span></button>
+                        <button class="lang-option" data-lang="fr" role="option"><span class="lang-native">Français</span></button>
+                        <button class="lang-option" data-lang="es" role="option"><span class="lang-native">Español</span></button>
+                        <button class="lang-option" data-lang="ar" role="option"><span class="lang-native">العربية</span></button>
+                    </div>
+                </div>
+                <button class="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ MOBILE MENU ============ -->
+    <div class="mobile-menu" role="dialog" aria-label="Mobile navigation">
+        <button class="mobile-menu-close" aria-label="Close menu">&times;</button>
+        <a href="/en/" class="nav-link">Home</a>
+        <a href="/en/#destinations" class="nav-link" data-i18n="nav.destinations">Destinations</a>
+        <a href="/en/#experiences" class="nav-link" data-i18n="nav.experiences">Experiences</a>
+        <a href="/en/trip-builder/" class="nav-link" data-i18n="nav.trip-builder">Plan Your Journey</a>
+        <a href="/en/about/" class="nav-link" data-i18n="nav.about">Our Story</a>
+        <a href="/en/journal/" class="nav-link" data-i18n="nav.journal">Journal</a>
+        <a href="/en/sustainability/" class="nav-link" data-i18n="nav.sustainability">Impact</a>
+        <a href="/en/contact/" class="nav-link" data-i18n="nav.contact">Contact</a>
+    </div>
+
+    <!-- ============ HERO ============ -->
+    <section class="sust-hero" role="banner">
+        <div class="hero-media">
+            <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=1920&q=80" alt="Lush Moroccan cedar forest representing environmental stewardship">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow" data-i18n="sust.eyebrow">Our Impact</div>
+            <h1 class="hero-title" data-i18n="sust.hero-title">Travel That<br>Gives Back</h1>
+            <p class="hero-subtitle" data-i18n="sust.hero-subtitle">Sustainability isn't a marketing add-on at Adrar Voyages — it's how we operate. Every journey directly funds community projects, environmental restoration, and cultural preservation across Morocco.</p>
+        </div>
+    </section>
+
+    <!-- ============ INTRO PARAGRAPH ============ -->
+    <section class="section" style="background: var(--color-surface);">
+        <div class="container-narrow" style="text-align: center;">
+            <p class="text-body-lg fade-in" data-i18n="sust.intro">Since our founding in 2003, we've believed that extraordinary travel and responsible tourism are not opposing forces — they're inseparable. We source locally, hire exclusively from the communities we visit, offset every gram of trip-related carbon, and channel a percentage of each booking into our Adrar Foundation. The result? Journeys that feel richer for our guests and create lasting, measurable good for the Moroccan people and landscapes we love.</p>
+        </div>
+    </section>
+
+    <!-- ============ IMPACT DASHBOARD ============ -->
+    <section class="section" style="background: var(--cream-50);">
+        <div class="container">
+            <div style="text-align: center; max-width: 640px; margin: 0 auto var(--space-12);">
+                <div class="text-eyebrow fade-in" data-i18n="sust.dashboard.eyebrow">By The Numbers</div>
+                <h2 class="heading-display heading-md fade-in stagger-1" style="margin-top: var(--space-4);" data-i18n="sust.dashboard.title">Our Impact Dashboard</h2>
+            </div>
+
+            <div class="impact-dashboard">
+                <div class="impact-stat fade-in stagger-1">
+                    <div class="impact-number" data-count="87" data-suffix="%">0%</div>
+                    <div class="impact-label" data-i18n="sust.stat1.label">Spent locally in communities</div>
+                </div>
+                <div class="impact-stat fade-in stagger-2">
+                    <div class="impact-number" data-count="12000" data-suffix="+">0+</div>
+                    <div class="impact-label" data-i18n="sust.stat2.label">Trees planted since 2019</div>
+                </div>
+                <div class="impact-stat fade-in stagger-3">
+                    <div class="impact-number" data-count="340" data-suffix="+">0+</div>
+                    <div class="impact-label" data-i18n="sust.stat3.label">Local families supported</div>
+                </div>
+                <div class="impact-stat fade-in stagger-4">
+                    <div class="impact-number" style="font-size: var(--text-3xl);" data-i18n="sust.stat4.number">Carbon Neutral</div>
+                    <div class="impact-label" data-i18n="sust.stat4.label">All trips offset since 2023</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="zellige-divider">
+
+    <!-- ============ THREE PILLARS ============ -->
+    <section class="section-lg zellige-pattern" style="background: var(--color-surface);">
+        <div class="container">
+            <div style="text-align: center; max-width: 640px; margin: 0 auto var(--space-12);">
+                <div class="text-eyebrow fade-in" data-i18n="sust.pillars.eyebrow">What Guides Us</div>
+                <h2 class="heading-display heading-md fade-in stagger-1" style="margin-top: var(--space-4);" data-i18n="sust.pillars.title">Our Three Pillars</h2>
+                <p class="text-body-lg fade-in stagger-2" style="margin-top: var(--space-4);" data-i18n="sust.pillars.subtitle">Every decision we make is filtered through these three commitments.</p>
+            </div>
+
+            <div class="pillar-grid">
+                <!-- Pillar 1 -->
+                <div class="pillar-card fade-in stagger-1">
+                    <div class="pillar-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3 class="pillar-title" data-i18n="sust.pillar1.title">Community First</h3>
+                    <p class="pillar-desc" data-i18n="sust.pillar1.desc">We hire locally, pay fair wages above market rate, and reinvest in community projects from education to healthcare.</p>
+                    <ul class="pillar-highlights">
+                        <li>100% local guides and drivers</li>
+                        <li>Fair wages 30% above national average</li>
+                        <li>Community health fund since 2018</li>
+                        <li>Scholarships for 45 students annually</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="pillar-card fade-in stagger-2">
+                    <div class="pillar-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 class="pillar-title" data-i18n="sust.pillar2.title">Environmental Stewardship</h3>
+                    <p class="pillar-desc" data-i18n="sust.pillar2.desc">From carbon offsetting to reforestation, we work to ensure every trip leaves the landscape better than we found it.</p>
+                    <ul class="pillar-highlights">
+                        <li>100% carbon offset since 2023</li>
+                        <li>12,000+ native trees planted</li>
+                        <li>Zero single-use plastic on all trips</li>
+                        <li>Solar-powered desert camps</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="pillar-card fade-in stagger-3">
+                    <div class="pillar-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3 class="pillar-title" data-i18n="sust.pillar3.title">Cultural Preservation</h3>
+                    <p class="pillar-desc" data-i18n="sust.pillar3.desc">We partner with artisans, fund heritage restoration, and support language programs to keep Morocco's living culture thriving.</p>
+                    <ul class="pillar-highlights">
+                        <li>Partnerships with 60+ artisan cooperatives</li>
+                        <li>Heritage restoration in Fes medina</li>
+                        <li>Amazigh language preservation fund</li>
+                        <li>Annual craft apprenticeship program</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SUSTAINABILITY SCORES ============ -->
+    <section class="section-lg" style="background: var(--cream-50);">
+        <div class="container">
+            <div style="text-align: center; max-width: 640px; margin: 0 auto var(--space-12);">
+                <div class="text-eyebrow fade-in" data-i18n="sust.scores.eyebrow">Transparency</div>
+                <h2 class="heading-display heading-md fade-in stagger-1" style="margin-top: var(--space-4);" data-i18n="sust.scores.title">Sustainability Scores</h2>
+                <p class="text-body-lg fade-in stagger-2" style="margin-top: var(--space-4);" data-i18n="sust.scores.subtitle">Every Adrar trip receives an independently verified sustainability rating. We publish these openly so you know exactly the impact of your journey.</p>
+            </div>
+
+            <div class="score-explanation fade-in">
+                <div>
+                    <h3 class="heading-display heading-sm" style="margin-bottom: var(--space-4);">How We Rate Each Trip</h3>
+                    <p class="text-body-lg" style="margin-bottom: var(--space-6);">Our scoring system evaluates six criteria: local spending ratio, carbon footprint, community employment, waste management, cultural engagement, and environmental restoration contribution. Scores are verified annually by an independent sustainability auditor.</p>
+                    <div class="sustainability-score" style="max-width: 300px;">
+                        <div class="score-indicator" style="--score-percent: 92%;">
+                            <span class="score-value">A+</span>
+                        </div>
+                        <div>
+                            <div style="font-size: var(--text-xs); font-weight: 600; color: var(--zellige-700);">Example: Sahara Luxury Stargazing</div>
+                            <div style="font-size: var(--text-xs); color: var(--color-text-secondary);">92% local impact score</div>
+                        </div>
+
+            <div class="sustainability-gauge" data-score="A+" style="display: flex; flex-direction: column; align-items: center; margin: var(--space-8) auto; max-width: 300px;">
+                <svg width="140" height="140" viewBox="0 0 120 120" style="transform: rotate(-90deg);">
+                    <circle cx="60" cy="60" r="54" fill="none" stroke="var(--charcoal-100)" stroke-width="8"/>
+                    <circle class="gauge-fill" cx="60" cy="60" r="54" fill="none" stroke="var(--zellige-500)" stroke-width="8" stroke-linecap="round" stroke-dasharray="339.292" stroke-dashoffset="339.292"/>
+                </svg>
+                <div class="gauge-score" style="position: relative; top: -90px; text-align: center;">
+                    <span style="font-size: var(--text-3xl); font-weight: 700; color: var(--zellige-600);">A+</span>
+                    <div class="gauge-percent" style="font-size: var(--text-sm); color: var(--charcoal-400);">98%</div>
+                </div>
+                <p style="margin-top: -40px; font-size: var(--text-xs); color: var(--charcoal-400); text-align: center;">Overall Sustainability Rating</p>
+            </div>
+                    </div>
+                </div>
+                <div class="score-scale">
+                    <div class="score-row">
+                        <div class="score-badge a-plus">A+</div>
+                        <div class="score-row-label"><strong>Exceptional (90-100%)</strong><br>Best-in-class sustainability with measurable restoration impact</div>
+                    </div>
+                    <div class="score-row">
+                        <div class="score-badge a">A</div>
+                        <div class="score-row-label"><strong>Excellent (80-89%)</strong><br>Strong local impact across all criteria</div>
+                    </div>
+                    <div class="score-row">
+                        <div class="score-badge b-plus">B+</div>
+                        <div class="score-row-label"><strong>Good (70-79%)</strong><br>Above-average sustainability, room to grow</div>
+                    </div>
+                    <div class="score-row">
+                        <div class="score-badge b">B</div>
+                        <div class="score-row-label"><strong>Moderate (60-69%)</strong><br>Meets baseline standards, improvement plan active</div>
+                    </div>
+                    <div class="score-row">
+                        <div class="score-badge c">C</div>
+                        <div class="score-row-label"><strong>Developing (&lt;60%)</strong><br>Minimum acceptable, targeted intervention required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="zellige-divider">
+
+    <!-- ============ TIMELINE ============ -->
+    <section class="section-lg" style="background: var(--color-surface);">
+        <div class="container">
+            <div style="text-align: center; max-width: 640px; margin: 0 auto var(--space-12);">
+                <div class="text-eyebrow fade-in" data-i18n="sust.timeline.eyebrow">Our Journey</div>
+                <h2 class="heading-display heading-md fade-in stagger-1" style="margin-top: var(--space-4);" data-i18n="sust.timeline.title">Sustainability Milestones</h2>
+            </div>
+
+            <div style="max-width: 680px; margin: 0 auto;">
+                <div class="timeline fade-in">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2019</div>
+                        <p class="timeline-text"><strong>Adrar Foundation established.</strong> Launched our first reforestation project in the Middle Atlas, planting 1,200 cedar saplings with local Amazigh cooperatives.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2020</div>
+                        <p class="timeline-text"><strong>Zero-waste commitment.</strong> Eliminated single-use plastics across all trips and partnered with local recycling initiatives in Marrakech and Fes.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2021</div>
+                        <p class="timeline-text"><strong>Community health fund.</strong> Established healthcare access for 120+ families in remote Atlas villages, covering preventive care and emergency transport.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2022</div>
+                        <p class="timeline-text"><strong>Sustainability scoring launched.</strong> Introduced transparent A+ to C rating system for every trip, verified by independent third-party auditors.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2023</div>
+                        <p class="timeline-text"><strong>Carbon neutral achieved.</strong> All trips became fully carbon offset through verified reforestation and renewable energy projects in Morocco.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2024</div>
+                        <p class="timeline-text"><strong>Solar-powered desert camps.</strong> Transitioned all Sahara camps to 100% solar energy, eliminating diesel generators entirely.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2025</div>
+                        <p class="timeline-text"><strong>87% local spending milestone.</strong> Achieved industry-leading local spend ratio, with 87 dirhams of every 100 spent directly in Moroccan communities.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2026</div>
+                        <p class="timeline-text"><strong>12,000 trees planted.</strong> Reached our reforestation target ahead of schedule. Now launching Phase 2: agroforestry projects with 30 new village partnerships.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ DOWNLOAD IMPACT REPORT ============ -->
+    <section class="section" style="background: var(--cream-50);">
+        <div class="container">
+            <div class="report-download fade-in">
+                <div class="report-download-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--zellige-600)" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                </div>
+                <div>
+                    <h3 class="heading-display heading-sm" style="margin-bottom: var(--space-2);">Download Our 2026 Impact Report</h3>
+                    <p style="font-size: var(--text-sm); color: var(--color-text-secondary); margin-bottom: var(--space-4);">Full transparency — read the detailed data behind every number on this page.</p>
+                    <a href="#" class="btn btn-outline" download>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download PDF (2.4 MB)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CTA SECTION ============ -->
+    <section class="cta-section section-lg">
+        <div class="container" style="position: relative; z-index: 1; text-align: center; max-width: 720px;">
+            <div class="text-eyebrow fade-in" style="color: var(--gold-400);">Begin Your Story</div>
+            <h2 class="heading-display heading-lg fade-in stagger-1" style="margin-top: var(--space-4); color: #fff;" data-i18n="cta.title">Your Morocco Story<br>Starts Here</h2>
+            <p class="text-body-lg fade-in stagger-2" style="margin-top: var(--space-6); color: var(--cream-300);" data-i18n="cta.subtitle">Travel with purpose. Let our experts craft a journey that's extraordinary for you and transformative for the communities you visit.</p>
+            <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; margin-top: var(--space-10);" class="fade-in stagger-3">
+                <a href="/en/trip-builder/" class="btn btn-gold btn-lg" data-i18n="cta.button">Start Planning</a>
+                <a href="/en/contact/" class="btn btn-secondary btn-lg" data-i18n="nav.contact">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/en/" class="logo" style="margin-bottom: var(--space-2);">
+                        <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: var(--gold-400);">
+                            <path d="M20 2L36 14V30L20 38L4 30V14L20 2Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.3"/>
+                            <path d="M20 8L30 16V28L20 34L10 28V16L20 8Z" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.6"/>
+                            <path d="M20 14L25 18V26L20 30L15 26V18L20 14Z" fill="currentColor" opacity="0.8"/>
+                            <circle cx="20" cy="21" r="2" fill="currentColor"/>
+                        </svg>
+                        <span class="logo-text" style="color: var(--cream-100);">ADRAR <span style="color: var(--gold-400);">VOYAGES</span></span>
+                    </a>
+                    <p data-i18n="footer.tagline">Crafting extraordinary Moroccan journeys since 2003. A local operator with global standards of excellence.</p>
+                    <div class="footer-social" style="margin-top: var(--space-6);">
+                        <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg></a>
+                        <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                        <a href="#" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75,15.02 15.5,11.75 9.75,8.48" fill="#1e1e24"/></svg></a>
+                        <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 2a2 2 0 110 4 2 2 0 010-4z"/></svg></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading" data-i18n="footer.explore">Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="/en/#destinations" data-i18n="nav.destinations">Destinations</a></li>
+                        <li><a href="/en/#experiences" data-i18n="nav.experiences">Experiences</a></li>
+                        <li><a href="/en/trip-builder/" data-i18n="nav.trip-builder">Plan Your Journey</a></li>
+                        <li><a href="/en/journal/" data-i18n="nav.journal">Journal</a></li>
+                        <li><a href="/en/sustainability/" data-i18n="nav.sustainability">Impact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading" data-i18n="footer.company">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="/en/about/" data-i18n="footer.about">About Us</a></li>
+                        <li><a href="/en/about/#careers">Careers</a></li>
+                        <li><a href="/en/about/#press">Press</a></li>
+                        <li><a href="/en/about/#partners">Partner With Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading" data-i18n="footer.support">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="/en/contact/" data-i18n="nav.contact">Contact</a></li>
+                        <li><a href="/en/contact/#faq" data-i18n="footer.faq">FAQ</a></li>
+                        <li><a href="/en/privacy/" data-i18n="footer.privacy">Privacy Policy</a></li>
+                        <li><a href="/en/terms/" data-i18n="footer.terms">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span data-i18n="footer.copyright">&copy; 2026 Adrar Voyages. All rights reserved.</span>
+                <span>Made with &hearts; in Marrakech</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============ CONCIERGE FAB ============ -->
+    <button class="concierge-fab" aria-label="Chat with concierge">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <span class="whatsapp-badge">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+        </span>
+    </button>
+
+    <!-- ============ SCRIPTS ============ -->
+    <script src="../../js/i18n.js"></script>
+    <script src="../../js/main.js?v=2"></script>
+    <script src="../../js/features.js"></script>
+</body>
+</html>
