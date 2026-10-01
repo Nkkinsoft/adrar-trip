@@ -4,6 +4,7 @@
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* --- HEADER SCROLL BEHAVIOR --- */
   const header = document.querySelector('.site-header');
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* --- SCROLL ANIMATIONS (IntersectionObserver) --- */
   const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in');
-  if (animatedElements.length) {
+  if (animatedElements.length && !prefersReducedMotion) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -79,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* --- COUNTER ANIMATION --- */
   const counters = document.querySelectorAll('[data-count]');
-  if (counters.length) {
+  if (counters.length && !prefersReducedMotion) {
     const counterObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -116,20 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
-  /* --- PARALLAX EFFECT --- */
-  const parallaxElements = document.querySelectorAll('[data-parallax]');
-  if (parallaxElements.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      parallaxElements.forEach(el => {
-        const speed = parseFloat(el.getAttribute('data-parallax')) || 0.3;
-        const rect = el.getBoundingClientRect();
-        const offset = (rect.top + scrollY) * speed;
-        el.style.transform = `translateY(${(scrollY - offset) * speed}px)`;
-      });
-    }, { passive: true });
-  }
 
   /* --- MOOD FILTER CHIPS --- */
   const moodChips = document.querySelectorAll('.mood-chip');
@@ -212,28 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* --- TESTIMONIAL SLIDER --- */
-  const testimonialTrack = document.querySelector('.testimonial-track');
-  if (testimonialTrack) {
-    const cards = testimonialTrack.querySelectorAll('.testimonial-card');
-    let currentIndex = 0;
-    const updateSlider = () => {
-      const cardWidth = cards[0].offsetWidth + 24;
-      testimonialTrack.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-    };
-
-    const prevBtn = document.querySelector('.testimonial-prev');
-    const nextBtn = document.querySelector('.testimonial-next');
-    if (prevBtn) prevBtn.addEventListener('click', () => {
-      currentIndex = Math.max(0, currentIndex - 1);
-      updateSlider();
-    });
-    if (nextBtn) nextBtn.addEventListener('click', () => {
-      currentIndex = Math.min(cards.length - 1, currentIndex + 1);
-      updateSlider();
-    });
-  }
-
   /* --- SEASONAL BANNER DISMISS --- */
   const seasonalBanner = document.querySelector('.seasonal-banner');
   if (seasonalBanner) {
@@ -299,4 +264,110 @@ document.addEventListener('DOMContentLoaded', () => {
     script.textContent = JSON.stringify(schema);
     document.head.appendChild(script);
   }
+
+  /* === MOTION CRAFT === */
+
+  /* --- Kinetic Hero Split --- */
+  function splitHeroTitle() {
+    const heroTitle = document.querySelector('.hero-title');
+    if (!heroTitle) return;
+    const html = heroTitle.innerHTML;
+    if (html.includes('<span class="line"')) return;
+    const parts = html.split(/<br\s*\/?>/i);
+    heroTitle.innerHTML = parts.map((part, i) =>
+      `<span class="line"><span class="line-inner">${part.trim()}</span></span>`
+    ).join('');
+  }
+  splitHeroTitle();
+  document.addEventListener('langchange', () => {
+    requestAnimationFrame(() => {
+      const heroTitle = document.querySelector('.hero-title');
+      if (heroTitle) {
+        heroTitle.querySelectorAll('.line-inner').forEach(el => {
+          el.style.animation = 'none';
+          el.offsetHeight;
+          el.style.animation = '';
+        });
+      }
+    });
+  });
+
+  /* --- View Transitions --- */
+  if ('startViewTransition' in document) {
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href]');
+      if (!link || link.target === '_blank' || link.hash || link.hasAttribute('download')) return;
+      const url = new URL(link.href, location.origin);
+      if (url.origin !== location.origin) return;
+      e.preventDefault();
+      document.documentElement.classList.add('vt-active');
+      const transition = document.startViewTransition(() => {
+        location.href = link.href;
+      });
+      transition.finished.finally(() => {
+        document.documentElement.classList.remove('vt-active');
+      });
+    });
+  }
+
+  /* --- Magnetic / Tilt --- */
+  if (!prefersReducedMotion) {
+    document.querySelectorAll('.magnetic').forEach(el => {
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        el.style.setProperty('--lift-y', `${y * -8}px`);
+        el.style.transform = `translateY(${y * -8}px) rotateX(${y * -5}deg) rotateY(${x * 5}deg)`;
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.setProperty('--lift-y', '0px');
+        el.style.transform = '';
+      });
+    });
+  }
+
+  /* --- FLIP Dialog (card → detail) --- */
+  const flipDialog = document.getElementById('flip-dialog');
+  if (flipDialog) {
+    document.querySelectorAll('[data-flip-target]').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const targetId = trigger.dataset.flipTarget;
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        const content = flipDialog.querySelector('.flip-dialog-content');
+        content.innerHTML = target.innerHTML;
+        flipDialog.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    flipDialog.querySelector('.flip-dialog-close')?.addEventListener('click', () => {
+      flipDialog.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+    flipDialog.addEventListener('click', (e) => {
+      if (e.target === flipDialog) {
+        flipDialog.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  /* --- Reduced Motion: Counter Animation --- */
+  if (prefersReducedMotion) {
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = el.getAttribute('data-count');
+      const suffix = el.getAttribute('data-suffix') || '';
+      el.textContent = parseInt(target).toLocaleString() + suffix;
+    });
+  }
+
+  /* --- Reduced Motion: Hero Scroll Indicator --- */
+  if (prefersReducedMotion) {
+    document.querySelectorAll('.hero-scroll-indicator animate').forEach(a => {
+      if (typeof a.endElement === 'function') a.endElement();
+    });
+  }
+
+  /* === END MOTION CRAFT === */
 });

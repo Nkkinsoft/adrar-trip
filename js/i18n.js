@@ -562,12 +562,6 @@ const I18N = {
     document.documentElement.lang = lang;
     document.documentElement.dir = this.languages[lang].dir;
 
-    if (lang === 'ar') {
-      document.body.style.fontFamily = "var(--font-arabic)";
-    } else {
-      document.body.style.fontFamily = "";
-    }
-
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       const translation = this.t(key);

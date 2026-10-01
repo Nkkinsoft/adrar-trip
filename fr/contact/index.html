@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us — Adrar Voyages | Plan Your Moroccan Journey</title>
-    <meta name="description" content="Get in touch with Adrar Voyages to start planning your luxury Moroccan journey. Reach us by email, phone, WhatsApp, or visit our Marrakech office.">
+    <title>Contactez-nous — Adrar Voyages | Planifiez votre voyage au Maroc</title>
+    <meta name="description" content="Contactez Adrar Voyages pour commencer à planifier votre voyage de luxe au Maroc. Joignez-nous par e-mail, téléphone, WhatsApp ou visitez notre bureau à Marrakech.">
 
     <link rel="alternate" hreflang="en" href="/en/contact/" />
     <link rel="alternate" hreflang="fr" href="/fr/contact/" />
@@ -14,339 +14,23 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Manrope:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../css/design-system.css?v=2">
+    <link rel="stylesheet" href="../../css/design-system.css?v=4">
     <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
     <meta name="theme-color" content="#c46a35">
 
-    <meta property="og:title" content="Contact Us — Adrar Voyages">
-    <meta property="og:description" content="Let's start planning your Moroccan journey. Reach us by email, phone, or WhatsApp.">
+    <meta property="og:title" content="Contactez-nous — Adrar Voyages">
+    <meta property="og:description" content="Commençons à planifier votre voyage marocain. Contactez-nous par e-mail, téléphone ou WhatsApp.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
-
-    <style>
-        /* Hero */
-        .contact-hero {
-            position: relative;
-            min-height: 50vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        .contact-hero .hero-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .contact-hero .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(10,10,13,0.55) 0%, rgba(10,10,13,0.35) 50%, rgba(10,10,13,0.6) 100%);
-            z-index: 1;
-        }
-        .contact-hero .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 780px;
-            padding: var(--space-16) var(--space-6) var(--space-12);
-        }
-
-        /* Two-column layout */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: var(--space-12);
-            align-items: start;
-        }
-
-        /* Contact form */
-        .contact-form {
-            background: var(--color-surface-elevated);
-            border-radius: var(--radius-xl);
-            padding: var(--space-10);
-            box-shadow: var(--shadow-lg);
-        }
-        .contact-form h2 {
-            font-family: var(--font-serif);
-            font-size: var(--text-3xl);
-            color: var(--charcoal-800);
-            margin-bottom: var(--space-2);
-        }
-        .contact-form > p {
-            color: var(--charcoal-400);
-            margin-bottom: var(--space-8);
-            font-size: var(--text-base);
-        }
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-5);
-        }
-        .form-group {
-            margin-bottom: var(--space-5);
-        }
-        .form-group label {
-            display: block;
-            font-size: var(--text-sm);
-            font-weight: 600;
-            color: var(--charcoal-700);
-            margin-bottom: var(--space-2);
-        }
-        .form-group label .optional {
-            font-weight: 400;
-            color: var(--charcoal-300);
-            font-size: var(--text-xs);
-        }
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: var(--space-3) var(--space-4);
-            border: 1.5px solid var(--color-border);
-            border-radius: var(--radius-lg);
-            font-family: var(--font-sans);
-            font-size: var(--text-base);
-            color: var(--charcoal-800);
-            background: var(--color-surface);
-            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-            outline: none;
-        }
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(196, 106, 53, 0.12);
-        }
-        .form-group input.error,
-        .form-group textarea.error {
-            border-color: #dc3545;
-            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
-        }
-        .form-group textarea {
-            resize: vertical;
-            min-height: 140px;
-        }
-        .form-error {
-            font-size: var(--text-xs);
-            color: #dc3545;
-            margin-top: var(--space-1);
-            display: none;
-        }
-        .form-error.visible {
-            display: block;
-        }
-        .form-success {
-            display: none;
-            background: rgba(45, 139, 87, 0.08);
-            border: 1px solid var(--zellige-500);
-            border-radius: var(--radius-lg);
-            padding: var(--space-6);
-            text-align: center;
-            color: var(--zellige-600);
-        }
-        .form-success.visible {
-            display: block;
-        }
-        .form-success h3 {
-            font-family: var(--font-serif);
-            font-size: var(--text-xl);
-            margin-bottom: var(--space-2);
-            color: var(--zellige-700);
-        }
-
-        /* Contact info cards */
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-5);
-        }
-        .info-card {
-            background: var(--color-surface-elevated);
-            border-radius: var(--radius-xl);
-            padding: var(--space-6);
-            box-shadow: var(--shadow-md);
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-4);
-            transition: transform var(--transition-base), box-shadow var(--transition-base);
-        }
-        .info-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-        .info-card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: var(--radius-lg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        .info-card-icon.terracotta {
-            background: rgba(196, 106, 53, 0.1);
-            color: var(--terracotta-600);
-        }
-        .info-card-icon.indigo {
-            background: rgba(53, 78, 150, 0.1);
-            color: var(--indigo-600);
-        }
-        .info-card-icon.zellige {
-            background: rgba(45, 139, 87, 0.1);
-            color: var(--zellige-600);
-        }
-        .info-card-icon.gold {
-            background: rgba(212, 165, 55, 0.1);
-            color: var(--gold-600);
-        }
-        .info-card-icon.warm {
-            background: rgba(196, 153, 98, 0.1);
-            color: var(--warm-600);
-        }
-        .info-card-content h4 {
-            font-family: var(--font-sans);
-            font-weight: 600;
-            font-size: var(--text-base);
-            color: var(--charcoal-800);
-            margin-bottom: var(--space-1);
-        }
-        .info-card-content p,
-        .info-card-content a {
-            font-size: var(--text-sm);
-            color: var(--charcoal-400);
-            line-height: 1.6;
-        }
-        .info-card-content a {
-            text-decoration: none;
-            transition: color var(--transition-fast);
-        }
-        .info-card-content a:hover {
-            color: var(--color-primary);
-        }
-        .info-card-content a.whatsapp-link {
-            color: var(--zellige-600);
-            font-weight: 600;
-        }
-        .info-card-content a.whatsapp-link:hover {
-            color: var(--zellige-700);
-        }
-
-        /* Map placeholder */
-        .map-placeholder {
-            width: 100%;
-            height: 360px;
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--charcoal-100) 0%, var(--cream-200) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: var(--space-3);
-            border: 1.5px dashed var(--color-border);
-            position: relative;
-        }
-        .map-placeholder::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c46a35' stroke-width='0.5'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z'/%3E%3Cpath d='M30 10L50 30L30 50L10 30Z'/%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-        .map-placeholder-icon {
-            color: var(--charcoal-300);
-        }
-        .map-placeholder-text {
-            font-weight: 600;
-            color: var(--charcoal-400);
-            font-size: var(--text-lg);
-        }
-        .map-placeholder-sub {
-            font-size: var(--text-sm);
-            color: var(--charcoal-300);
-        }
-
-        /* FAQ */
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .faq-item {
-            border-bottom: 1px solid var(--color-border);
-        }
-        .faq-item:first-child {
-            border-top: 1px solid var(--color-border);
-        }
-        .faq-question {
-            width: 100%;
-            background: none;
-            border: none;
-            padding: var(--space-6) 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: var(--space-4);
-            cursor: pointer;
-            text-align: left;
-            font-family: var(--font-sans);
-            font-size: var(--text-lg);
-            font-weight: 600;
-            color: var(--charcoal-800);
-            transition: color var(--transition-fast);
-        }
-        .faq-question:hover {
-            color: var(--color-primary);
-        }
-        .faq-question svg {
-            flex-shrink: 0;
-            transition: transform var(--transition-base);
-            color: var(--charcoal-300);
-        }
-        .faq-item.open .faq-question svg {
-            transform: rotate(45deg);
-            color: var(--color-primary);
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.3s ease;
-        }
-        .faq-item.open .faq-answer {
-            max-height: 400px;
-            padding-bottom: var(--space-6);
-        }
-        .faq-answer p {
-            font-size: var(--text-base);
-            color: var(--charcoal-400);
-            line-height: 1.7;
-        }
-
-        /* CTA */
-        .cta-section {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--charcoal-800) 0%, var(--terracotta-800) 50%, var(--indigo-700) 100%);
-        }
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            opacity: 0.04;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffd354' stroke-width='0.5'%3E%3Cpath d='M50 0L100 50L50 100L0 50Z'/%3E%3Cpath d='M50 15L85 50L50 85L15 50Z'/%3E%3Cpath d='M50 30L70 50L50 70L30 50Z'/%3E%3Ccircle cx='50' cy='50' r='8'/%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-
-        @media (max-width: 768px) {
-            .contact-hero { min-height: 40vh; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .form-row { grid-template-columns: 1fr; }
-            .contact-form { padding: var(--space-6); }
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/pages/contact.css?v=4">
+    <script>(function(){var t=localStorage.getItem("adrar-theme");if(!t)t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
+    <script src="../../js/theme.js?v=4"></script>
 </head>
 <body>
 
@@ -374,6 +58,12 @@
             </nav>
 
             <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-toggle-icon">
+                        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    </span>
+                </button>
                 <div class="lang-switcher">
                     <button class="lang-current" aria-expanded="false" aria-label="Select language">
                         <span class="lang-native-display">English</span>
@@ -708,9 +398,9 @@
     </button>
 
     <!-- ============ SCRIPTS ============ -->
-    <script src="../../js/i18n.js"></script>
-    <script src="../../js/main.js?v=2"></script>
-    <script src="../../js/features.js"></script>
+    <script src="../../js/i18n.js?v=4"></script>
+    <script src="../../js/main.js?v=4"></script>
+    <script src="../../js/features.js?v=4"></script>
 
     <!-- Page-specific: FAQ accordion + Form validation -->
     <script>

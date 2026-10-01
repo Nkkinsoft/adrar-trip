@@ -14,290 +14,23 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Manrope:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../css/design-system.css?v=2">
+    <link rel="stylesheet" href="../../css/design-system.css?v=4">
     <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
     <meta name="theme-color" content="#c46a35">
 
     <meta property="og:title" content="Sustainability & Impact — Adrar Voyages">
     <meta property="og:description" content="Travel that gives back. See how every Adrar journey contributes to communities, the environment, and cultural preservation in Morocco.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
-
-    <style>
-        /* Hero */
-        .sust-hero {
-            position: relative;
-            min-height: 55vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        .sust-hero .hero-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .sust-hero .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(10,10,13,0.5) 0%, rgba(10,10,13,0.3) 50%, rgba(10,10,13,0.55) 100%);
-            z-index: 1;
-        }
-        .sust-hero .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 780px;
-            padding: var(--space-16) var(--space-6) var(--space-12);
-        }
-
-        /* Impact dashboard */
-        .impact-dashboard {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--space-6);
-        }
-        .impact-dashboard .impact-stat {
-            background: var(--color-surface-elevated);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-md);
-            padding: var(--space-10) var(--space-6);
-        }
-        .impact-dashboard .impact-number {
-            font-family: var(--font-serif);
-            font-size: var(--text-5xl);
-            font-weight: 700;
-            color: var(--color-primary);
-            line-height: 1;
-            margin-bottom: var(--space-2);
-        }
-        .impact-dashboard .impact-label {
-            font-size: var(--text-sm);
-            color: var(--color-text-secondary);
-            line-height: var(--leading-normal);
-        }
-        @media (max-width: 768px) {
-            .impact-dashboard { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        /* Pillar cards */
-        .pillar-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-8);
-        }
-        .pillar-card {
-            background: var(--color-surface-elevated);
-            border-radius: var(--radius-xl);
-            padding: var(--space-10) var(--space-8);
-            box-shadow: var(--shadow-md);
-            text-align: center;
-            transition: all var(--transition-base);
-            border-top: 4px solid transparent;
-        }
-        .pillar-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-xl);
-        }
-        .pillar-card:nth-child(1) { border-top-color: var(--terracotta-500); }
-        .pillar-card:nth-child(2) { border-top-color: var(--zellige-500); }
-        .pillar-card:nth-child(3) { border-top-color: var(--indigo-500); }
-        .pillar-icon {
-            width: 72px;
-            height: 72px;
-            margin: 0 auto var(--space-6);
-            border-radius: var(--radius-full);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: var(--text-2xl);
-        }
-        .pillar-card:nth-child(1) .pillar-icon { background: var(--terracotta-50); color: var(--terracotta-600); }
-        .pillar-card:nth-child(2) .pillar-icon { background: var(--zellige-50); color: var(--zellige-600); }
-        .pillar-card:nth-child(3) .pillar-icon { background: var(--indigo-50); color: var(--indigo-500); }
-        .pillar-title {
-            font-family: var(--font-serif);
-            font-size: var(--text-xl);
-            font-weight: 700;
-            margin-bottom: var(--space-3);
-        }
-        .pillar-desc {
-            font-size: var(--text-sm);
-            color: var(--color-text-secondary);
-            line-height: var(--leading-relaxed);
-            margin-bottom: var(--space-4);
-        }
-        .pillar-highlights {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-2);
-            text-align: left;
-        }
-        .pillar-highlights li {
-            font-size: var(--text-sm);
-            color: var(--charcoal-500);
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-2);
-        }
-        .pillar-highlights li::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            border-radius: var(--radius-full);
-            flex-shrink: 0;
-            margin-top: 7px;
-        }
-        .pillar-card:nth-child(1) .pillar-highlights li::before { background: var(--terracotta-400); }
-        .pillar-card:nth-child(2) .pillar-highlights li::before { background: var(--zellige-400); }
-        .pillar-card:nth-child(3) .pillar-highlights li::before { background: var(--indigo-400); }
-        @media (max-width: 768px) {
-            .pillar-grid { grid-template-columns: 1fr; }
-        }
-
-        /* Sustainability Scores */
-        .score-explanation {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-12);
-            align-items: center;
-        }
-        .score-scale {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-3);
-        }
-        .score-row {
-            display: flex;
-            align-items: center;
-            gap: var(--space-4);
-            padding: var(--space-4);
-            border-radius: var(--radius-lg);
-            background: var(--color-surface-elevated);
-            box-shadow: var(--shadow-sm);
-        }
-        .score-badge {
-            width: 48px;
-            height: 48px;
-            border-radius: var(--radius-full);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: var(--text-sm);
-            flex-shrink: 0;
-        }
-        .score-badge.a-plus { background: var(--zellige-100); color: var(--zellige-700); }
-        .score-badge.a { background: var(--zellige-50); color: var(--zellige-600); }
-        .score-badge.b-plus { background: var(--gold-100); color: var(--gold-700); }
-        .score-badge.b { background: var(--sand-200); color: var(--sand-700); }
-        .score-badge.c { background: var(--charcoal-50); color: var(--charcoal-400); }
-        .score-row-label {
-            font-size: var(--text-sm);
-            color: var(--charcoal-500);
-        }
-        .score-row-label strong {
-            color: var(--charcoal-700);
-        }
-        @media (max-width: 768px) {
-            .score-explanation { grid-template-columns: 1fr; }
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-left: var(--space-12);
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--zellige-400), var(--gold-400), var(--terracotta-400));
-        }
-        .timeline-item {
-            position: relative;
-            margin-bottom: var(--space-10);
-        }
-        .timeline-item:last-child { margin-bottom: 0; }
-        .timeline-dot {
-            position: absolute;
-            left: calc(var(--space-12) * -1 + 12px);
-            top: 4px;
-            width: 18px;
-            height: 18px;
-            border-radius: var(--radius-full);
-            background: var(--color-surface-elevated);
-            border: 3px solid var(--zellige-500);
-            z-index: 1;
-        }
-        .timeline-item:nth-child(even) .timeline-dot { border-color: var(--gold-500); }
-        .timeline-item:nth-child(3n) .timeline-dot { border-color: var(--terracotta-500); }
-        .timeline-year {
-            font-family: var(--font-serif);
-            font-size: var(--text-xl);
-            font-weight: 700;
-            color: var(--color-primary);
-            margin-bottom: var(--space-1);
-        }
-        .timeline-text {
-            font-size: var(--text-sm);
-            color: var(--color-text-secondary);
-            line-height: var(--leading-relaxed);
-        }
-        .timeline-text strong {
-            color: var(--charcoal-600);
-        }
-
-        /* Impact report download */
-        .report-download {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-6);
-            background: var(--zellige-50);
-            border: 1px solid var(--zellige-200);
-            border-radius: var(--radius-xl);
-            padding: var(--space-8) var(--space-10);
-        }
-        .report-download-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: var(--radius-full);
-            background: var(--zellige-100);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        @media (max-width: 640px) {
-            .report-download {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        /* CTA */
-        .cta-section {
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--charcoal-800) 0%, var(--terracotta-800) 50%, var(--indigo-700) 100%);
-        }
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            opacity: 0.04;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffd354' stroke-width='0.5'%3E%3Cpath d='M50 0L100 50L50 100L0 50Z'/%3E%3Cpath d='M50 15L85 50L50 85L15 50Z'/%3E%3Cpath d='M50 30L70 50L50 70L30 50Z'/%3E%3Ccircle cx='50' cy='50' r='8'/%3E%3C/g%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/pages/sustainability.css?v=4">
+    <script>(function(){var t=localStorage.getItem("adrar-theme");if(!t)t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
+    <script src="../../js/theme.js?v=4"></script>
 </head>
 <body>
 
@@ -325,6 +58,12 @@
             </nav>
 
             <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-toggle-icon">
+                        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    </span>
+                </button>
                 <div class="lang-switcher">
                     <button class="lang-current" aria-expanded="false" aria-label="Select language">
                         <span class="lang-native-display">English</span>
@@ -685,8 +424,8 @@
     </button>
 
     <!-- ============ SCRIPTS ============ -->
-    <script src="../../js/i18n.js"></script>
-    <script src="../../js/main.js?v=2"></script>
-    <script src="../../js/features.js"></script>
+    <script src="../../js/i18n.js?v=4"></script>
+    <script src="../../js/main.js?v=4"></script>
+    <script src="../../js/features.js?v=4"></script>
 </body>
 </html>

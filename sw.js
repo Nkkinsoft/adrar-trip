@@ -1,4 +1,4 @@
-const CACHE_NAME = 'adrar-v3';
+const CACHE_NAME = 'adrar-v4';
 
 self.addEventListener('install', () => {
     self.skipWaiting();

@@ -73,6 +73,10 @@
   --cream-300: #f9f0d8;
   --cream-400: #f3e5c0;
   --cream-500: #e8d5a3;
+  --cream-600: #d4c08e;
+  --cream-700: #b8a272;
+  --cream-800: #96835a;
+  --cream-900: #746544;
 
   /* Charcoal */
   --charcoal-50: #f5f5f6;
@@ -86,27 +90,51 @@
   --charcoal-800: #141418;
   --charcoal-900: #0a0a0d;
 
-  /* === SEMANTIC COLORS === */
-  --color-primary: var(--terracotta-500);
-  --color-primary-dark: var(--terracotta-700);
-  --color-secondary: var(--indigo-500);
-  --color-secondary-dark: var(--indigo-700);
-  --color-accent: var(--gold-500);
-  --color-accent-light: var(--gold-300);
-  --color-success: var(--zellige-500);
-  --color-surface: var(--cream-100);
-  --color-surface-elevated: #ffffff;
-  --color-surface-dark: var(--charcoal-800);
-  --color-text: var(--charcoal-800);
-  --color-text-secondary: var(--charcoal-400);
-  --color-text-inverse: var(--cream-50);
-  --color-border: var(--charcoal-100);
-  --color-border-light: var(--cream-300);
+  /* === ROLE TOKENS (Tier 2 — theme-switching layer) === */
+  /* In :root these resolve to light-mode palette values.
+     [data-theme="dark"] overrides these only; Tier 3 aliases stay stable. */
+  --role-surface: var(--cream-100);
+  --role-surface-elevated: #ffffff;
+  --role-surface-dark: var(--charcoal-800);
+  --role-text: var(--charcoal-800);
+  --role-text-secondary: var(--charcoal-400);
+  --role-text-inverse: var(--cream-50);
+  --role-border: var(--charcoal-100);
+  --role-border-light: var(--cream-300);
+  --role-primary: var(--terracotta-500);
+  --role-primary-dark: var(--terracotta-700);
+  --role-secondary: var(--indigo-500);
+  --role-secondary-dark: var(--indigo-700);
+  --role-accent: var(--gold-500);
+  --role-accent-light: var(--gold-300);
+  --role-success: var(--zellige-500);
+
+  /* === SEMANTIC COLORS (Tier 3 — consumed by components) === */
+  --color-primary: var(--role-primary);
+  --color-primary-dark: var(--role-primary-dark);
+  --color-secondary: var(--role-secondary);
+  --color-secondary-dark: var(--role-secondary-dark);
+  --color-accent: var(--role-accent);
+  --color-accent-light: var(--role-accent-light);
+  --color-success: var(--role-success);
+  --color-surface: var(--role-surface);
+  --color-surface-elevated: var(--role-surface-elevated);
+  --color-surface-dark: var(--role-surface-dark);
+  --color-text: var(--role-text);
+  --color-text-secondary: var(--role-text-secondary);
+  --color-text-inverse: var(--role-text-inverse);
+  --color-border: var(--role-border);
+  --color-border-light: var(--role-border-light);
+
+  /* Emerald aliases (map to zellige) */
+  --emerald-400: var(--zellige-400);
+  --emerald-500: var(--zellige-500);
 
   /* === TYPOGRAPHY === */
-  --font-serif: 'Playfair Display', 'Georgia', serif;
-  --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-  --font-arabic: 'Noto Naskh Arabic', 'Cairo', 'Tahoma', sans-serif;
+  --font-serif: 'Fraunces', 'Georgia', serif;
+  --font-sans: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  --font-arabic: 'IBM Plex Sans Arabic', 'Cairo', 'Tahoma', sans-serif;
+  --font-arabic-display: 'Amiri', 'Noto Naskh Arabic', serif;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -193,7 +221,7 @@
 
 /* === RTL SUPPORT === */
 [dir="rtl"] {
-  --font-heading: var(--font-arabic);
+  --font-heading: var(--font-arabic-display);
   --font-body: var(--font-arabic);
 }
 
@@ -260,7 +288,7 @@ button {
 }
 
 [dir="rtl"] .heading-display {
-  font-family: var(--font-arabic);
+  font-family: var(--font-arabic-display);
   font-weight: 600;
 }
 
@@ -364,6 +392,7 @@ button {
   background: transparent;
   color: var(--color-text-inverse);
   border: 1.5px solid rgba(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
 
@@ -444,8 +473,9 @@ button {
 .card-badge {
   position: absolute;
   top: var(--space-4);
-  left: var(--space-4);
+  inset-inline-start: var(--space-4);
   background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-full);
@@ -454,11 +484,6 @@ button {
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
   color: var(--color-primary);
-}
-
-[dir="rtl"] .card-badge {
-  left: auto;
-  right: var(--space-4);
 }
 
 .card-price {
@@ -570,6 +595,7 @@ button {
 
 .site-header.scrolled {
   background: rgba(255, 255, 255, 0.97);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
   backdrop-filter: blur(20px) saturate(1.8);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
 }
@@ -686,7 +712,7 @@ button {
 .lang-dropdown {
   position: absolute;
   top: calc(100% + var(--space-2));
-  right: 0;
+  inset-inline-end: 0;
   background: var(--color-surface-elevated);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-xl);
@@ -697,11 +723,6 @@ button {
   transform: translateY(-8px);
   transition: all var(--transition-base);
   z-index: var(--z-dropdown);
-}
-
-[dir="rtl"] .lang-dropdown {
-  right: auto;
-  left: 0;
 }
 
 .lang-switcher.open .lang-dropdown {
@@ -818,7 +839,7 @@ button {
 }
 
 [dir="rtl"] .hero-title {
-  font-family: var(--font-arabic);
+  font-family: var(--font-arabic-display);
   font-size: clamp(2.5rem, 7vw, 5.5rem);
 }
 
@@ -978,6 +999,7 @@ button {
 
 .exp-tag {
   background: rgba(255, 255, 255, 0.92);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-full);
@@ -1293,6 +1315,137 @@ button {
 .stagger-5 { transition-delay: 0.5s; }
 .stagger-6 { transition-delay: 0.6s; }
 
+/* === MOTION CRAFT === */
+
+/* --- Scroll Progress Bar (animation-timeline) --- */
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    position: fixed;
+    top: var(--banner-height);
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transform-origin: left;
+    animation: scroll-progress linear;
+    animation-timeline: scroll();
+    z-index: calc(var(--z-header) + 1);
+  }
+  @keyframes scroll-progress {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+}
+
+/* --- Kinetic Hero --- */
+.hero-title .line {
+  display: block;
+  overflow: hidden;
+}
+.hero-title .line-inner {
+  display: block;
+  opacity: 0;
+  transform: translateY(100%);
+  animation: kinetic-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hero-title .line:nth-child(2) .line-inner { animation-delay: 0.15s; }
+.hero-title .line:nth-child(3) .line-inner { animation-delay: 0.3s; }
+
+@keyframes kinetic-reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Amiri descender compensation for Arabic hero */
+[dir="rtl"] .hero-title .line-inner {
+  padding-bottom: 0.15em;
+}
+
+/* --- View Transitions --- */
+@supports (view-transition-name: none) {
+  .site-header {
+    view-transition-name: site-header;
+  }
+  html.vt-active .fade-in,
+  html.vt-active .fade-in-left,
+  html.vt-active .fade-in-right,
+  html.vt-active .scale-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --- Magnetic / Tilt --- */
+.magnetic {
+  --lift-y: 0px;
+}
+.card.magnetic:hover {
+  transform: translateY(calc(-4px + var(--lift-y))) scale(1.02);
+}
+.dest-card.magnetic:hover {
+  transform: translateY(var(--lift-y));
+}
+.exp-card.magnetic:hover {
+  transform: translateY(calc(-6px + var(--lift-y)));
+}
+
+/* --- FLIP Dialog (card → detail sheet) --- */
+.flip-dialog {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 13, 0.95);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+.flip-dialog.open {
+  opacity: 1;
+  visibility: visible;
+}
+.flip-dialog-content {
+  width: 100%;
+  max-width: 800px;
+  margin: var(--space-6);
+  background: var(--color-surface-elevated);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transform: scale(0.95);
+  transition: transform var(--transition-spring);
+}
+.flip-dialog.open .flip-dialog-content {
+  transform: scale(1);
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-title .line-inner {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .scroll-progress { display: none; }
+  .fade-in, .fade-in-left, .fade-in-right, .scale-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .magnetic:hover {
+    transform: none;
+  }
+  .hero-scroll-indicator circle {
+    animation: none;
+  }
+}
+
 /* Parallax */
 .parallax-section {
   position: relative;
@@ -1484,6 +1637,7 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-xl);
   padding: var(--space-6);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   transition: all var(--transition-base);
 }
@@ -1538,7 +1692,7 @@ button {
 .concierge-fab {
   position: fixed;
   bottom: var(--space-6);
-  right: var(--space-6);
+  inset-inline-end: var(--space-6);
   z-index: var(--z-overlay);
   width: 60px;
   height: 60px;
@@ -1552,11 +1706,6 @@ button {
   font-size: var(--text-xl);
   cursor: pointer;
   transition: all var(--transition-base);
-}
-
-[dir="rtl"] .concierge-fab {
-  right: auto;
-  left: var(--space-6);
 }
 
 .concierge-fab:hover {
@@ -1681,6 +1830,7 @@ button {
   position: fixed;
   inset: 0;
   background: rgba(10, 10, 13, 0.95);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   z-index: var(--z-modal);
   display: flex;
@@ -1707,7 +1857,7 @@ button {
 .mobile-menu-close {
   position: absolute;
   top: var(--space-6);
-  right: var(--space-6);
+  inset-inline-end: var(--space-6);
   width: 44px;
   height: 44px;
   display: flex;
@@ -1715,11 +1865,6 @@ button {
   justify-content: center;
   color: var(--cream-100);
   font-size: var(--text-2xl);
-}
-
-[dir="rtl"] .mobile-menu-close {
-  right: auto;
-  left: var(--space-6);
 }
 
 /* Hamburger */
@@ -1797,6 +1942,7 @@ button {
   position: fixed;
   inset: 0;
   background: rgba(10, 10, 13, 0.85);
+  -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   z-index: var(--z-modal);
   display: flex;
@@ -1854,7 +2000,7 @@ button {
   margin: 0;
 }
 .ai-architect-close {
-  margin-left: auto;
+  margin-inline-start: auto;
   background: none;
   border: none;
   color: rgba(255, 255, 255, 0.5);
@@ -2013,7 +2159,7 @@ button {
 .concierge-widget {
   position: fixed;
   bottom: 100px;
-  right: var(--space-6);
+  inset-inline-end: var(--space-6);
   width: 360px;
   max-height: 520px;
   background: var(--color-surface-elevated);
@@ -2028,7 +2174,6 @@ button {
   transition: all var(--transition-base);
   overflow: hidden;
 }
-[dir="rtl"] .concierge-widget { right: auto; left: var(--space-6); }
 .concierge-widget.open {
   opacity: 1;
   visibility: visible;
@@ -2064,14 +2209,13 @@ button {
   margin: 0;
 }
 .concierge-widget-close {
-  margin-left: auto;
+  margin-inline-start: auto;
   background: none;
   border: none;
   color: rgba(255, 255, 255, 0.7);
   font-size: var(--text-lg);
   cursor: pointer;
 }
-[dir="rtl"] .concierge-widget-close { margin-left: 0; margin-right: auto; }
 .concierge-widget-body {
   flex: 1;
   overflow-y: auto;
@@ -2176,12 +2320,10 @@ button {
 }
 @media (max-width: 480px) {
   .concierge-widget {
-    right: var(--space-3);
-    left: var(--space-3);
+    inset-inline: var(--space-3);
     width: auto;
     bottom: 88px;
   }
-  [dir="rtl"] .concierge-widget { right: var(--space-3); left: var(--space-3); }
 }
 
 /* --- SUSTAINABILITY GAUGE --- */
@@ -2219,6 +2361,7 @@ button {
   position: fixed;
   inset: 0;
   background: rgba(10, 10, 13, 0.95);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   z-index: var(--z-modal);
   display: flex;
@@ -2238,14 +2381,13 @@ button {
 .preview-360-close {
   position: absolute;
   top: -40px;
-  right: 0;
+  inset-inline-end: 0;
   background: none;
   border: none;
   color: rgba(255, 255, 255, 0.6);
   font-size: var(--text-2xl);
   cursor: pointer;
 }
-[dir="rtl"] .preview-360-close { right: auto; left: 0; }
 .preview-360-close:hover { color: #fff; }
 .preview-360-content {
   background: var(--charcoal-800);
@@ -2321,4 +2463,70 @@ button {
 @keyframes availPulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
+}
+
+/* === SURFACE-FIXED-DARK UTILITY === */
+/* Components that stay dark in both light and dark themes.
+   Uses raw palette values — immune to role-token theme overrides. */
+.surface-fixed-dark {
+  background: var(--charcoal-800);
+  color: var(--cream-50);
+  --_text-primary: var(--cream-50);
+  --_text-secondary: var(--charcoal-300);
+  --_border: rgba(255, 255, 255, 0.1);
+}
+
+/* === DARK THEME === */
+/* Overrides only Tier 2 role tokens. Tier 3 semantic aliases
+   automatically resolve to dark values — no component changes needed. */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --role-surface: var(--charcoal-900);
+  --role-surface-elevated: var(--charcoal-800);
+  --role-surface-dark: var(--charcoal-700);
+  --role-text: var(--cream-50);
+  --role-text-secondary: var(--charcoal-300);
+  --role-text-inverse: var(--charcoal-800);
+  --role-border: var(--charcoal-700);
+  --role-border-light: var(--charcoal-600);
+  --role-primary: var(--terracotta-400);
+  --role-primary-dark: var(--terracotta-600);
+  --role-secondary: var(--indigo-400);
+  --role-secondary-dark: var(--indigo-600);
+  --role-accent: var(--gold-400);
+  --role-accent-light: var(--gold-300);
+  --role-success: var(--zellige-400);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] body {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* === THEME TOGGLE === */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  background: var(--color-border);
+}
+.theme-toggle svg {
+  transition: opacity var(--transition-fast);
 }
