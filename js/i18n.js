@@ -596,14 +596,19 @@ const I18N = {
 
   updateHreflang() {
     const baseUrl = window.location.origin;
-    const path = window.location.pathname.replace(/^\/(en|fr|es|ar)/, '') || '/';
+    // Remove /adrar-trip base path if present, then remove language prefix
+    let path = window.location.pathname;
+    if (path.startsWith('/adrar-trip')) {
+      path = path.replace('/adrar-trip', '');
+    }
+    path = path.replace(/^\/(en|fr|es|ar)/, '') || '/';
 
     document.querySelectorAll('link[hreflang]').forEach(link => {
       const hreflang = link.getAttribute('hreflang');
       if (hreflang === 'x-default') {
-        link.href = `${baseUrl}/en${path}`;
+        link.href = `${baseUrl}/adrar-trip/en${path}`;
       } else {
-        link.href = `${baseUrl}/${hreflang}${path}`;
+        link.href = `${baseUrl}/adrar-trip/${hreflang}${path}`;
       }
     });
   },
@@ -611,7 +616,9 @@ const I18N = {
   init() {
     const saved = localStorage.getItem('adrar-lang');
     const browserLang = navigator.language.split('-')[0];
-    const pathLang = window.location.pathname.split('/')[1];
+    const pathParts = window.location.pathname.split('/');
+    // Path structure: /adrar-trip/{lang}/... or /{lang}/...
+    const pathLang = pathParts[1] === 'adrar-trip' ? pathParts[2] : pathParts[1];
 
     let lang = this.defaultLang;
     if (this.languages[pathLang]) {
