@@ -564,6 +564,7 @@ const I18N = {
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
+      if (!this.translations[key]) return;
       const translation = this.t(key);
       if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
         el.placeholder = translation;
@@ -583,7 +584,9 @@ const I18N = {
 
     document.querySelectorAll('.lang-option').forEach(opt => {
       opt.classList.toggle('active', opt.dataset.lang === lang);
+      opt.setAttribute('aria-selected', String(opt.dataset.lang === lang));
     });
+    document.querySelectorAll('.lang-native-display').forEach(el => el.textContent = this.languages[lang].native);
 
     this.updateHreflang();
     localStorage.setItem('adrar-lang', lang);
@@ -611,10 +614,10 @@ const I18N = {
     const pathLang = window.location.pathname.split('/')[1];
 
     let lang = this.defaultLang;
-    if (saved && this.languages[saved]) {
-      lang = saved;
-    } else if (this.languages[pathLang]) {
+    if (this.languages[pathLang]) {
       lang = pathLang;
+    } else if (saved && this.languages[saved]) {
+      lang = saved;
     } else if (this.languages[browserLang]) {
       lang = browserLang;
     }

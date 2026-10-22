@@ -1,0 +1,248 @@
+{
+  "results": [
+    {
+      "lang": "en",
+      "route": "",
+      "title": "Where the SaharaMeets the Soul",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "en",
+      "route": "destinations/",
+      "title": "A Country ofInfinite Landscapes",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "en",
+      "route": "experiences/",
+      "title": "Journeys That Transform",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "en",
+      "route": "trip-builder/",
+      "title": "Design Your Perfect Morocco",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "en",
+      "route": "about/",
+      "title": "Born From the Sand,Built on Trust",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "en",
+      "route": "journal/",
+      "title": "Journal & Stories",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "en",
+      "route": "sustainability/",
+      "title": "Travel ThatGives Back",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "en",
+      "route": "contact/",
+      "title": "Let’s Plan YourMoroccan Journey",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "fr",
+      "route": "",
+      "title": "Où le Sahararencontre l'âme",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "fr",
+      "route": "destinations/",
+      "title": "Un pays auxmille paysages",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "fr",
+      "route": "experiences/",
+      "title": "Des voyages qui vous transforment",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "fr",
+      "route": "trip-builder/",
+      "title": "Imaginez votre voyage au Maroc",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "fr",
+      "route": "about/",
+      "title": "Nés du désert,guidés par la confiance",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "fr",
+      "route": "journal/",
+      "title": "Carnet de voyage",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "fr",
+      "route": "sustainability/",
+      "title": "Voyager pourfaire la différence",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "fr",
+      "route": "contact/",
+      "title": "Imaginons votrevoyage au Maroc",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "es",
+      "route": "",
+      "title": "Donde el Saharaencuentra el alma",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "es",
+      "route": "destinations/",
+      "title": "Un país depaisajes infinitos",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "es",
+      "route": "experiences/",
+      "title": "Viajes que transforman",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "es",
+      "route": "trip-builder/",
+      "title": "Diseña tu viaje por Marruecos",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "es",
+      "route": "about/",
+      "title": "Nacidos del desierto,guiados por la confianza",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "es",
+      "route": "journal/",
+      "title": "Diario de viajes",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "es",
+      "route": "sustainability/",
+      "title": "Viajar paradejar una huella positiva",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "es",
+      "route": "contact/",
+      "title": "Planeemos tuviaje por Marruecos",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "ar",
+      "route": "",
+      "title": "حيث يلتقي الصحراءبالروح",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "ar",
+      "route": "destinations/",
+      "title": "بلد منالمناظر المذهلة",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "ar",
+      "route": "experiences/",
+      "title": "رحلات تغيّر نظرتك",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "ar",
+      "route": "trip-builder/",
+      "title": "صمّم رحلتك في المغرب",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "ar",
+      "route": "about/",
+      "title": "من قلب الصحراء،على أساس الثقة",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "ar",
+      "route": "journal/",
+      "title": "حكايات الرحلات",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "ar",
+      "route": "sustainability/",
+      "title": "سفر يمنحالمزيد للمجتمعات",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "lang": "ar",
+      "route": "contact/",
+      "title": "لنخطّط معًالرحلتك في المغرب",
+      "overflow": false,
+      "keys": 0
+    },
+    {
+      "filterVisible": 1
+    },
+    {
+      "homeJourney": "Your Morocco journey\n\n9 days · Marrakech → Atlas Mountains · Imlil → Sahara · Merzouga → Fes → Chefchaouen\n\n1 · Marrakech\n2–3 · Atlas Mountains · Imlil\n4–5 · Sahara · Merzouga\n6–7 · Fes\n8–9 · Chefchaouen\n\nAn initial route to inspire your trip. Travel times, pricing, and availability must be confirmed with our team.\n\nDISCUSS THIS JOURNEY"
+    },
+    {
+      "search": 1
+    },
+    {
+      "mobileOverflow": false
+    },
+    {
+      "menu": "false"
+    },
+    {
+      "arabicOverflow": false
+    }
+  ],
+  "errors": [],
+  "broken": []
+}

@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/en/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/en/about/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/about/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/about/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/about/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/about/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/about/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/en/contact/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/contact/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/contact/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/contact/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/contact/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/contact/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/en/destinations/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/destinations/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/destinations/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/destinations/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/destinations/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/destinations/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/en/experiences/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/experiences/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/experiences/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/experiences/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/experiences/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/experiences/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/en/journal/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/journal/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/journal/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/journal/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/journal/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/journal/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/en/sustainability/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/sustainability/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/sustainability/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/sustainability/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/sustainability/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/sustainability/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/en/trip-builder/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/trip-builder/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/trip-builder/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/trip-builder/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/trip-builder/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/trip-builder/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/fr/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/fr/about/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/about/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/about/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/about/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/about/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/about/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/fr/contact/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/contact/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/contact/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/contact/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/contact/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/contact/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/fr/destinations/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/destinations/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/destinations/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/destinations/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/destinations/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/destinations/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/fr/experiences/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/experiences/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/experiences/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/experiences/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/experiences/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/experiences/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/fr/journal/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/journal/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/journal/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/journal/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/journal/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/journal/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/fr/sustainability/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/sustainability/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/sustainability/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/sustainability/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/sustainability/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/sustainability/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/fr/trip-builder/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/trip-builder/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/trip-builder/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/trip-builder/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/trip-builder/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/trip-builder/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/es/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/es/about/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/about/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/about/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/about/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/about/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/about/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/es/contact/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/contact/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/contact/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/contact/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/contact/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/contact/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/es/destinations/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/destinations/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/destinations/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/destinations/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/destinations/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/destinations/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/es/experiences/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/experiences/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/experiences/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/experiences/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/experiences/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/experiences/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/es/journal/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/journal/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/journal/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/journal/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/journal/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/journal/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/es/sustainability/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/sustainability/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/sustainability/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/sustainability/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/sustainability/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/sustainability/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/es/trip-builder/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/trip-builder/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/trip-builder/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/trip-builder/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/trip-builder/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/trip-builder/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/ar/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/ar/about/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/about/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/about/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/about/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/about/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/about/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/ar/contact/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/contact/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/contact/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/contact/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/contact/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/contact/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/ar/destinations/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/destinations/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/destinations/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/destinations/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/destinations/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/destinations/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/ar/experiences/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/experiences/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/experiences/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/experiences/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/experiences/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/experiences/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/ar/journal/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/journal/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/journal/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/journal/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/journal/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/journal/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/ar/sustainability/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/sustainability/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/sustainability/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/sustainability/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/sustainability/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/sustainability/" />
+  </url>
+  <url>
+    <loc>https://nkkinsoft.github.io/adrar-trip/ar/trip-builder/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+      <xhtml:link rel="alternate" hreflang="en" href="https://nkkinsoft.github.io/adrar-trip/en/trip-builder/" />
+      <xhtml:link rel="alternate" hreflang="fr" href="https://nkkinsoft.github.io/adrar-trip/fr/trip-builder/" />
+      <xhtml:link rel="alternate" hreflang="es" href="https://nkkinsoft.github.io/adrar-trip/es/trip-builder/" />
+      <xhtml:link rel="alternate" hreflang="ar" href="https://nkkinsoft.github.io/adrar-trip/ar/trip-builder/" />
+      <xhtml:link rel="alternate" hreflang="x-default" href="https://nkkinsoft.github.io/adrar-trip/en/trip-builder/" />
+  </url>
+</urlset>

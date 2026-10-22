@@ -10,9 +10,9 @@
     return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
-  function apply(theme) {
+  function apply(theme, persist) {
     root.setAttribute('data-theme', theme);
-    localStorage.setItem(STORAGE_KEY, theme);
+    if (persist) localStorage.setItem(STORAGE_KEY, theme);
     var meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.content = theme === 'dark' ? '#0a0a0d' : '#c46a35';
   }
@@ -44,7 +44,7 @@
       if (!btn) return;
       var current = root.getAttribute('data-theme');
       var next = current === 'dark' ? 'light' : 'dark';
-      apply(next);
+      apply(next, true);
       updateIcons();
     });
   });

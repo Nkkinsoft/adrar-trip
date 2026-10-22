@@ -1,0 +1,10 @@
+{
+  "planner": true,
+  "escape": true,
+  "gallery": true,
+  "chatEscapesHTML": true,
+  "reducedMotion": true,
+  "darkMode": true,
+  "errors": [],
+  "accessibility": []
+}

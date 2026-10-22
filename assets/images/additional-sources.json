@@ -1,0 +1,27 @@
+[
+  {
+    "name": "rabat",
+    "page": "https://unsplash.com/s/photos/rabat",
+    "source": "https://images.unsplash.com/photo-1591606968395-e9561e379def"
+  },
+  {
+    "name": "agadir",
+    "page": "https://unsplash.com/s/photos/agadir",
+    "source": "https://images.unsplash.com/photo-1538053367502-742497073841"
+  },
+  {
+    "name": "dakhla",
+    "page": "https://unsplash.com/s/photos/dakhla",
+    "source": "https://images.unsplash.com/photo-1661426795053-08140bc5c688"
+  },
+  {
+    "name": "dades",
+    "page": "https://unsplash.com/s/photos/dades",
+    "source": "https://images.unsplash.com/photo-1738189237717-739ec4e0ee2a"
+  },
+  {
+    "name": "fes",
+    "page": "https://unsplash.com/s/photos/fes",
+    "source": "https://images.unsplash.com/photo-1557503799-fac6a98054b3"
+  }
+]

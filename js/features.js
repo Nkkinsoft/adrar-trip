@@ -7,209 +7,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =========================================
-     1. AI TRIP ARCHITECT — Conversational UI
-     ========================================= */
-  const tripBuilder = document.querySelector('.trip-builder-steps');
-  const generateBtn = document.querySelector('.builder-generate');
-
-  if (tripBuilder && generateBtn) {
-    const conversationalOverlay = document.createElement('div');
-    conversationalOverlay.className = 'ai-architect-overlay';
-    conversationalOverlay.innerHTML = `
-      <div class="ai-architect-panel">
-        <div class="ai-architect-header">
-          <div class="ai-architect-avatar">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-              <path d="M2 17l10 5 10-5"/>
-              <path d="M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-          <div>
-            <h4 class="ai-architect-name">Adrar AI Architect</h4>
-            <p class="ai-architect-status">Crafting your perfect journey</p>
-          </div>
-          <button class="ai-architect-close" aria-label="Close">&times;</button>
-        </div>
-        <div class="ai-architect-messages"></div>
-        <div class="ai-architect-input-area">
-          <input type="text" class="ai-architect-input" placeholder="Tell me about your dream Morocco trip...">
-          <button class="ai-architect-send" aria-label="Send">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-          </button>
-        </div>
-      </div>
-    `;
-    document.body.appendChild(conversationalOverlay);
-
-    const messagesEl = conversationalOverlay.querySelector('.ai-architect-messages');
-    const inputEl = conversationalOverlay.querySelector('.ai-architect-input');
-    const sendBtn = conversationalOverlay.querySelector('.ai-architect-send');
-    const closeBtn = conversationalOverlay.querySelector('.ai-architect-close');
-
-    const conversationFlow = [
-      {
-        bot: "Welcome! I'm your Adrar AI Travel Architect. I'll craft a personalized Morocco itinerary based on your preferences. What kind of experience are you dreaming of?",
-        suggestions: ['Desert adventure', 'Cultural immersion', 'Romantic escape', 'Family fun', 'Wellness retreat']
-      },
-      {
-        bot: "Wonderful choice! How many days do you have for your Moroccan journey?",
-        suggestions: ['5-7 days', '8-10 days', '11-14 days', '2+ weeks']
-      },
-      {
-        bot: "And who will be traveling?",
-        suggestions: ['Just me', 'Couple', 'Family with kids', 'Group of friends']
-      },
-      {
-        bot: "What's your preferred travel style?",
-        suggestions: ['Luxury & comfort', 'Authentic & local', 'Adventure & active', 'Mix of everything']
-      },
-      {
-        bot: "Excellent! Let me craft your perfect itinerary...",
-        suggestions: [],
-        isProcessing: true
-      }
-    ];
-
-    let currentStep = 0;
-    let userAnswers = {};
-
-    function addMessage(text, type, delay = 0) {
-      return new Promise(resolve => {
-        setTimeout(() => {
-          const msg = document.createElement('div');
-          msg.className = `ai-msg ai-msg-${type}`;
-          msg.innerHTML = `<div class="ai-msg-bubble">${text}</div>`;
-          messagesEl.appendChild(msg);
-          messagesEl.parentElement.scrollTop = messagesEl.parentElement.scrollHeight;
-          resolve();
-        }, delay);
-      });
-    }
-
-    function addSuggestions(suggestions) {
-      const existing = conversationalOverlay.querySelector('.ai-suggestions');
-      if (existing) existing.remove();
-
-      if (!suggestions.length) return;
-
-      const container = document.createElement('div');
-      container.className = 'ai-suggestions';
-      suggestions.forEach(text => {
-        const btn = document.createElement('button');
-        btn.className = 'ai-suggestion-chip';
-        btn.textContent = text;
-        btn.addEventListener('click', () => handleUserInput(text));
-        container.appendChild(btn);
-      });
-      messagesEl.parentElement.appendChild(container);
-      messagesEl.parentElement.scrollTop = messagesEl.parentElement.scrollHeight;
-    }
-
-    function showTypingIndicator() {
-      const typing = document.createElement('div');
-      typing.className = 'ai-msg ai-msg-bot ai-typing';
-      typing.innerHTML = `<div class="ai-msg-bubble"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>`;
-      messagesEl.appendChild(typing);
-      messagesEl.parentElement.scrollTop = messagesEl.parentElement.scrollHeight;
-      return typing;
-    }
-
-    async function handleUserInput(text) {
-      const suggestions = conversationalOverlay.querySelector('.ai-suggestions');
-      if (suggestions) suggestions.remove();
-
-      inputEl.value = '';
-      await addMessage(text, 'user');
-
-      userAnswers[`step${currentStep}`] = text;
-      currentStep++;
-
-      if (currentStep < conversationFlow.length) {
-        const step = conversationFlow[currentStep];
-        const typing = showTypingIndicator();
-
-        setTimeout(async () => {
-          typing.remove();
-          await addMessage(step.bot, 'bot');
-
-          if (step.isProcessing) {
-            await showProcessing();
-          } else {
-            addSuggestions(step.suggestions);
-          }
-        }, 1200);
-      }
-    }
-
-    async function showProcessing() {
-      const steps = [
-        'Analyzing your preferences...',
-        'Selecting ideal destinations...',
-        'Matching local experiences...',
-        'Calculating optimal route...',
-        'Your journey is ready!'
-      ];
-
-      for (let i = 0; i < steps.length; i++) {
-        await addMessage(steps[i], 'bot-system', i === 0 ? 800 : 600);
-      }
-
-      setTimeout(() => {
-        const result = document.createElement('div');
-        result.className = 'ai-result-card';
-        result.innerHTML = `
-          <div class="ai-result-header">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-500)" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-            <h4>Your Personalized Itinerary</h4>
-          </div>
-          <div class="ai-result-summary">
-            <p><strong>Based on:</strong> ${Object.values(userAnswers).join(' → ')}</p>
-            <p><strong>Duration:</strong> 10 days / 9 nights</p>
-            <p><strong>Highlights:</strong> Marrakech → Atlas Mountains → Sahara Desert → Fes Medina</p>
-            <p><strong>Style:</strong> Luxury cultural immersion with local guides</p>
-          </div>
-          <div class="ai-result-actions">
-            <a href="#" class="btn btn-gold">View Full Itinerary</a>
-            <button class="btn btn-outline ai-refine">Refine with Human Expert</button>
-          </div>
-        `;
-        messagesEl.appendChild(result);
-        messagesEl.parentElement.scrollTop = messagesEl.parentElement.scrollHeight;
-      }, 1000);
-    }
-
-    generateBtn.addEventListener('click', () => {
-      conversationalOverlay.classList.add('open');
-      currentStep = 0;
-      userAnswers = {};
-      messagesEl.innerHTML = '';
-      const existing = conversationalOverlay.querySelector('.ai-suggestions');
-      if (existing) existing.remove();
-
-      setTimeout(async () => {
-        await addMessage(conversationFlow[0].bot, 'bot', 300);
-        addSuggestions(conversationFlow[0].suggestions);
-      }, 400);
-    });
-
-    closeBtn.addEventListener('click', () => {
-      conversationalOverlay.classList.remove('open');
-    });
-
-    sendBtn.addEventListener('click', () => {
-      if (inputEl.value.trim()) handleUserInput(inputEl.value.trim());
-    });
-
-    inputEl.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && inputEl.value.trim()) {
-        handleUserInput(inputEl.value.trim());
-      }
-    });
-  }
-
-
-  /* =========================================
      2. CONCIERGE CHAT WIDGET
      ========================================= */
   const conciergeFab = document.querySelector('.concierge-fab');
@@ -225,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <div>
           <h4>Adrar Concierge</h4>
-          <p>Typically replies in minutes</p>
+          <p>Automated travel guide</p>
         </div>
         <button class="concierge-widget-close" aria-label="Close">&times;</button>
       </div>
@@ -268,13 +65,16 @@ document.addEventListener('DOMContentLoaded', () => {
       pricing: "Our journeys start from €800/person for Essential trips and go up to €5,000+ for Ultra-Luxury experiences. Most guests spend around €1,500-3,000 for a premium 7-10 day journey. Would you like a detailed quote?",
       custom: "We'd love to craft a bespoke itinerary for you! Our AI Trip Architect can help you design your perfect journey, or I can connect you with a human travel expert. Which would you prefer?",
       'best-time': "Morocco is wonderful year-round! Spring (March-May) and Autumn (September-November) are ideal for most regions. Summer is perfect for the coast and mountains. Winter offers magical Sahara days with cool, clear skies. What season are you considering?",
-      human: "Absolutely! I'll connect you with one of our travel experts. You can also reach us directly on WhatsApp at +212 600-000000 or email at hello@adrarvoyages.com. A specialist will respond within 30 minutes during business hours."
+      human: "To contact the travel team, visit the Contact page or email hello@adrarvoyages.ma. This automated chat does not send your messages."
     };
 
     function addWidgetMessage(text, type) {
       const msg = document.createElement('div');
       msg.className = `widget-msg widget-msg-${type}`;
-      msg.innerHTML = `<div class="widget-msg-bubble">${text}</div>`;
+      const bubble = document.createElement('div');
+      bubble.className = 'widget-msg-bubble';
+      bubble.textContent = text;
+      msg.appendChild(bubble);
       widgetMessages.appendChild(msg);
       chatWidget.querySelector('.concierge-widget-body').scrollTop =
         chatWidget.querySelector('.concierge-widget-body').scrollHeight;
@@ -319,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (lower.includes('human') || lower.includes('person') || lower.includes('agent') || lower.includes('whatsapp')) {
           response = autoResponses.human;
         } else {
-          response = "Thank you for your message! Our travel team will get back to you shortly. For immediate assistance, tap 'Talk to human' or reach us on WhatsApp.";
+          response = "This is an automated guide and messages are not sent to our team. For a personal response, use the contact page or email hello@adrarvoyages.ma.";
         }
         addWidgetMessage(response, 'bot');
       }, 1000);
@@ -419,44 +219,13 @@ document.addEventListener('DOMContentLoaded', () => {
      5. 360° PREVIEW TRIGGER
      ========================================= */
   document.querySelectorAll('[data-360-preview]').forEach(trigger => {
-    trigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      const previewUrl = trigger.dataset['360Preview'];
-      const overlay = document.createElement('div');
-      overlay.className = 'preview-360-overlay';
-      overlay.innerHTML = `
-        <div class="preview-360-container">
-          <button class="preview-360-close" aria-label="Close">&times;</button>
-          <div class="preview-360-content">
-            <div class="preview-360-placeholder">
-              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--gold-500)" stroke-width="1">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M2 12h20"/>
-                <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
-              </svg>
-              <h3>360° Immersive Preview</h3>
-              <p>Drag to explore this destination in full 360°</p>
-              <p class="preview-360-note">Connect your 360° media provider to activate this feature</p>
-            </div>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(overlay);
-      requestAnimationFrame(() => overlay.classList.add('open'));
-
-      overlay.querySelector('.preview-360-close').addEventListener('click', () => {
-        overlay.classList.remove('open');
-        setTimeout(() => overlay.remove(), 300);
-      });
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) {
-          overlay.classList.remove('open');
-          setTimeout(() => overlay.remove(), 300);
-        }
-      });
+    trigger.setAttribute('role', 'link');
+    trigger.setAttribute('tabindex', '0');
+    trigger.addEventListener('keydown', event => { if (event.key === 'Enter') trigger.click(); });
+    trigger.addEventListener('click', event => {
+      if (!event.target.closest('a, button')) location.assign('/' + document.documentElement.lang + '/trip-builder/');
     });
   });
-
 
   /* =========================================
      6. GROUP PLANNING SHARED TRIP
@@ -465,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (groupPlanBtn) {
     groupPlanBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const shareUrl = window.location.href + '?group=' + Math.random().toString(36).substring(2, 8);
+      const shareUrl = window.location.origin + '/' + document.documentElement.lang + '/trip-builder/';
       if (navigator.share) {
         navigator.share({
           title: 'Plan our Morocco trip together!',
@@ -489,19 +258,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  /* =========================================
-     7. LIVE AVAILABILITY INDICATORS
-     ========================================= */
-  document.querySelectorAll('[data-availability]').forEach(el => {
-    const spots = parseInt(el.dataset.availability);
-    if (spots <= 3) {
-      el.innerHTML = `<span class="avail-dot avail-low"></span> Only ${spots} spots left`;
-      el.classList.add('avail-low');
-    } else if (spots <= 8) {
-      el.innerHTML = `<span class="avail-dot avail-medium"></span> ${spots} spots available`;
-    } else {
-      el.innerHTML = `<span class="avail-dot avail-high"></span> Available`;
-    }
-  });
 
 });

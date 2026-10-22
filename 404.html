@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found — Adrar Voyages</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#1a1a24;color:#f5f0e8;font-family:'Manrope',system-ui,sans-serif}
+        .container{text-align:center;padding:2rem}
+        h1{font-family:'Fraunces',serif;font-size:clamp(3rem,8vw,6rem);font-weight:300;letter-spacing:0.05em;margin-bottom:1rem;color:#c46a35}
+        p{font-size:1.125rem;color:rgba(245,240,232,0.7);margin-bottom:2rem;max-width:28rem}
+        a{display:inline-block;padding:0.75rem 2rem;border:1px solid rgba(196,106,53,0.5);color:#c46a35;text-decoration:none;font-size:0.875rem;letter-spacing:0.1em;text-transform:uppercase;transition:all 0.3s}
+        a:hover{background:rgba(196,106,53,0.1);border-color:#c46a35}
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=Manrope:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>404</h1>
+        <p>The page you're looking for has wandered off the caravan route. Let us guide you back.</p>
+        <a href="/adrar-trip/en/">Return Home</a>
+    </div>
+    <script>
+        // Try to redirect to the correct language version
+        (function() {
+            var lang = navigator.language || navigator.userLanguage || 'en';
+            var code = lang.substring(0, 2).toLowerCase();
+            var valid = ['en', 'fr', 'es', 'ar'];
+            if (valid.indexOf(code) === -1) code = 'en';
+            // Only redirect if we landed here from a path that looks like a language route
+            var path = window.location.pathname;
+            if (path === '/adrar-trip/' || path === '/adrar-trip') {
+                window.location.replace('/adrar-trip/' + code + '/');
+            }
+        })();
+    </script>
+</body>
+</html>
