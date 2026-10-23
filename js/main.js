@@ -33,7 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
       opt.addEventListener('click', () => {
         const lang = opt.dataset.lang;
         if (lang) {
-          const path = location.pathname.replace(/^\/(en|fr|es|ar)(?=\/|$)/, '/' + lang);
+          const path = /^(\/adrar-trip)?\/(en|fr|es|ar)(?=\/|$)/.test(location.pathname)
+            ? location.pathname.replace(/^(\/adrar-trip)?\/(en|fr|es|ar)(?=\/|$)/, (m, base) => (base || '') + '/' + lang)
+            : '/adrar-trip/' + lang + '/';
+          try { localStorage.setItem('adrar-lang', lang); } catch (e) {}
           location.assign(path + location.search + location.hash);
           langSwitcher.classList.remove('open');
         }
@@ -239,8 +242,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* --- PWA SERVICE WORKER --- */
   if ('serviceWorker' in navigator) {
-    // Service worker disabled for GitHub Pages deployment
-  // navigator.serviceWorker.register('/sw.js').catch(() => {});
+    // Offline support, scoped to the GitHub Pages project path
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/adrar-trip/sw.js', { scope: '/adrar-trip/' }).catch(() => {});
+    });
   }
 
   /* --- STRUCTURED DATA (JSON-LD) --- */

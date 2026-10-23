@@ -1,13 +1,9 @@
 # Adrar Voyages — robots.txt
-# https://nkkinsoft.github.io/adrar-trip/
+# Note: GitHub Pages project sites serve this at /adrar-trip/robots.txt;
+# search engines only read robots.txt at the domain root, so the sitemap
+# should also be submitted in Google Search Console.
 
 User-agent: *
 Allow: /
 
-# Disallow asset directories that don't need crawling
-Disallow: /adrar-trip/css/
-Disallow: /adrar-trip/js/
-Disallow: /adrar-trip/node_modules/
-
-# Sitemap
 Sitemap: https://nkkinsoft.github.io/adrar-trip/sitemap.xml
