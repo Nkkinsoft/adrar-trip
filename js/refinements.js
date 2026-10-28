@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const detail=document.createElement('p');detail.textContent=`${days} ${copy.days} · ${route.map(i=>destinationNames[i]).join(' → ')}`;section.append(detail);
     const list=document.createElement('ol');route.forEach((i,n)=>{const li=document.createElement('li');const start=Math.floor(n*days/route.length)+1,end=Math.floor((n+1)*days/route.length);li.textContent=`${start===end?start:start+'–'+end} · ${destinationNames[i]}`;list.append(li);});section.append(list);
     const note=document.createElement('p');note.textContent=copy.note;section.append(note);
-    const link=document.createElement('a');link.className='btn btn-gold';link.href=`/${lang}/contact/`;link.textContent=copy.contact;section.append(link);
+    const link=document.createElement('a');link.className='btn btn-gold';link.href=`/adrar-trip/${lang}/contact/`;link.textContent=copy.contact;section.append(link);
     container.querySelector('.journey-result')?.remove();container.append(section);
     try{localStorage.setItem('adrar-journey',JSON.stringify({days,route:route.map(i=>destinationNames[i]),selections}));}catch{}
     section.scrollIntoView({behavior:reduced?'auto':'smooth',block:'center'});section.focus({preventScroll:true});return section;
@@ -72,5 +72,5 @@ document.addEventListener('DOMContentLoaded', () => {
   const enquiry=document.querySelector('#contact-form #message');
   if(enquiry&&!enquiry.value){try{const saved=JSON.parse(localStorage.getItem('adrar-journey'));if(saved)enquiry.value=`${copy.plan}: ${saved.days} ${copy.days}\n${saved.route.join(' → ')}`;}catch{}}
   // Remove dead navigation affordances and connect experience CTAs to the planner.
-  document.querySelectorAll('#experiences a[href="#"],#experiences button.btn').forEach(el=>el.addEventListener('click',()=>location.assign(`/${lang}/trip-builder/`)));
+  document.querySelectorAll('#experiences a[href="#"],#experiences button.btn').forEach(el=>el.addEventListener('click',()=>location.assign(`/adrar-trip/${lang}/trip-builder/`)));
 });
