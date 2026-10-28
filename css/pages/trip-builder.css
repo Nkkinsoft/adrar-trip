@@ -1197,4 +1197,105 @@
     padding: 18px;
     margin-top: 16px;
 }
+
+/* --- SEARCH OVERLAY --- */
+.search-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 13, 0.96);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 18vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+
+.search-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.search-inner {
+    width: 100%;
+    max-width: 680px;
+    padding: 0 var(--space-8);
+}
+
+.search-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 300;
+    padding: var(--space-4) 0;
+    outline: none;
+    letter-spacing: -0.02em;
+    transition: border-color var(--transition-fast);
+}
+
+.search-input:focus {
+    border-bottom-color: var(--gold-500);
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.search-close {
+    position: absolute;
+    top: var(--space-8);
+    inset-inline-end: var(--space-8);
+    color: rgba(255, 255, 255, 0.4);
+    font-size: var(--text-2xl);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-close:hover {
+    color: #fff;
+}
+
+.search-results {
+    display: grid;
+    gap: 8px;
+    margin-top: var(--space-8);
+    max-height: 45vh;
+    overflow-y: auto;
+}
+
+.search-result {
+    padding: 16px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-md);
+    color: var(--cream-100);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+    cursor: pointer;
+}
+
+.search-result:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.search-empty {
+    color: rgba(255, 255, 255, 0.4);
+    padding: var(--space-4) 0;
+    font-size: var(--text-sm);
+}
 .result-card .journey-result h3 { color: var(--color-primary); }
