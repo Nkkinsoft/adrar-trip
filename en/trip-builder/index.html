@@ -1048,10 +1048,16 @@
             });
 
             // --- Smooth scroll for hero CTA ---
-            document.querySelector('.tb-hero-cta[href="#trip-builder"]')?.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.getElementById('trip-builder')?.scrollIntoView({ behavior: 'smooth' });
-            });
+            var heroCta = document.querySelector('.tb-hero-cta[href="#trip-builder"]');
+            if (heroCta) {
+                heroCta.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var tripBuilder = document.getElementById('trip-builder');
+                    if (tripBuilder) {
+                        tripBuilder.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
 
         })();
     </script>
