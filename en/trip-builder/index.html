@@ -63,6 +63,7 @@
 
     <link rel="stylesheet" href="/adrar-trip/css/refinements.css?v=9">
     <link rel="stylesheet" href="/adrar-trip/css/enhancements.css?v=9">
+    <link rel="stylesheet" href="/adrar-trip/css/features-new.css?v=10">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -713,6 +714,138 @@
         </div>
     </section>
 
+    <!-- ============ TRIP COST CALCULATOR ============ -->
+    <section class="section-lg" style="background: var(--color-surface-elevated);">
+        <div class="container" style="max-width: 800px;">
+            <div class="text-eyebrow fade-in" data-i18n="calc.eyebrow">Estimate Your Journey</div>
+            <h2 class="heading-display heading-md fade-in stagger-1" style="margin-top: var(--space-4);" data-i18n="calc.title">Trip Cost Calculator</h2>
+            <div class="trip-calculator fade-in stagger-2">
+                <div class="currency-switcher">
+                    <button class="currency-btn active" data-currency="USD">USD $</button>
+                    <button class="currency-btn" data-currency="EUR">EUR €</button>
+                    <button class="currency-btn" data-currency="GBP">GBP £</button>
+                    <button class="currency-btn" data-currency="MAD">MAD</button>
+                </div>
+                <div class="calc-row">
+                    <div class="calc-field">
+                        <label for="calc-duration" data-i18n="calc.duration">Duration (days)</label>
+                        <select name="duration" id="calc-duration">
+                            <option value="3">3 Days</option>
+                            <option value="5">5 Days</option>
+                            <option value="7" selected>7 Days</option>
+                            <option value="10">10 Days</option>
+                            <option value="14">14 Days</option>
+                        </select>
+                    </div>
+                    <div class="calc-field">
+                        <label for="calc-travelers" data-i18n="calc.travelers">Travelers</label>
+                        <input type="number" name="travelers" id="calc-travelers" value="2" min="1" max="20">
+                    </div>
+                </div>
+                <div class="calc-row">
+                    <div class="calc-field">
+                        <label for="calc-accommodation" data-i18n="calc.accommodation">Accommodation</label>
+                        <select name="accommodation" id="calc-accommodation">
+                            <option value="budget">Budget — Guesthouses</option>
+                            <option value="mid" selected>Mid-range — Riads & Hotels</option>
+                            <option value="luxury">Luxury — Palaces & Lodges</option>
+                        </select>
+                    </div>
+                    <div class="calc-field">
+                        <label for="calc-transport" data-i18n="calc.transport">Transport</label>
+                        <select name="transport" id="calc-transport">
+                            <option value="economy">Economy — Shared transfers</option>
+                            <option value="comfortable" selected>Comfortable — Private driver</option>
+                            <option value="private">Private — Luxury vehicle</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="calc-row">
+                    <div class="calc-field">
+                        <label for="calc-activities" data-i18n="calc.activities">Activities</label>
+                        <select name="activities" id="calc-activities">
+                            <option value="cultural">Cultural — Markets, museums, cuisine</option>
+                            <option value="adventure">Adventure — Trekking, camels, 4x4</option>
+                            <option value="mixed" selected>Mixed — Best of both</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="calc-total">
+                    <div class="calc-total-label" data-i18n="calc.estimated">Estimated Total</div>
+                    <div class="calc-total-amount">$0</div>
+                    <div class="calc-breakdown"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SAVE / COMPARE / SURPRISE ME ============ -->
+    <section class="section-lg">
+        <div class="container" style="max-width: 800px; text-align: center;">
+            <div class="text-eyebrow fade-in" data-i18n="tools.eyebrow">Planning Tools</div>
+            <h2 class="heading-display heading-md fade-in stagger-1" style="margin-top: var(--space-4);" data-i18n="tools.title">Save, Compare & Discover</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-6); margin-top: var(--space-10);" class="fade-in stagger-2">
+                <button class="btn btn-secondary" id="saveDraftBtn" style="padding: var(--space-6); display: flex; flex-direction: column; align-items: center; gap: var(--space-3); height: auto;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17,21 17,13 7,13 7,21"/><polyline points="7,3 7,8 15,8"/></svg>
+                    <span data-i18n="tools.save">Save Draft</span>
+                </button>
+                <button class="btn btn-secondary" id="compareBtn" style="padding: var(--space-6); display: flex; flex-direction: column; align-items: center; gap: var(--space-3); height: auto;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    <span data-i18n="tools.compare">Compare Journeys</span>
+                </button>
+                <button class="btn btn-gold" id="surpriseMeBtn" style="padding: var(--space-6); display: flex; flex-direction: column; align-items: center; gap: var(--space-3); height: auto;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <span data-i18n="tools.surprise">Surprise Me!</span>
+                </button>
+            </div>
+            <!-- Share / Export row -->
+            <div style="display: flex; gap: var(--space-4); justify-content: center; margin-top: var(--space-8);" class="fade-in stagger-3">
+                <button class="btn btn-secondary share-itinerary" style="display: inline-flex; align-items: center; gap: var(--space-2);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.48"/></svg>
+                    <span data-i18n="tools.share">Share Itinerary</span>
+                </button>
+                <button class="btn btn-secondary export-pdf" style="display: inline-flex; align-items: center; gap: var(--space-2);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <span data-i18n="tools.export">Export PDF</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PACKING LIST GENERATOR ============ -->
+    <section class="section-lg" style="background: var(--color-surface-elevated);">
+        <div class="container" style="max-width: 800px;">
+            <div class="packing-generator fade-in">
+                <div class="text-eyebrow" data-i18n="packing.eyebrow">Be Prepared</div>
+                <h3 data-i18n="packing.title">Packing List Generator</h3>
+                <p style="color: var(--color-text-secondary); margin-bottom: var(--space-6);" data-i18n="packing.subtitle">Select your trip type and we'll generate a tailored packing list.</p>
+                <div class="packing-options">
+                    <div class="packing-option">
+                        <input type="checkbox" id="pack-desert" name="desert">
+                        <label for="pack-desert" data-i18n="packing.desert">Desert Trek</label>
+                    </div>
+                    <div class="packing-option">
+                        <input type="checkbox" id="pack-city" name="city">
+                        <label for="pack-city" data-i18n="packing.city">City Explorer</label>
+                    </div>
+                    <div class="packing-option">
+                        <input type="checkbox" id="pack-mountains" name="mountains">
+                        <label for="pack-mountains" data-i18n="packing.mountains">Mountain Adventure</label>
+                    </div>
+                    <div class="packing-option">
+                        <input type="checkbox" id="pack-beach" name="beach">
+                        <label for="pack-beach" data-i18n="packing.beach">Coastal Relaxation</label>
+                    </div>
+                    <div class="packing-option">
+                        <input type="checkbox" id="pack-luxury" name="luxury">
+                        <label for="pack-luxury" data-i18n="packing.luxury">Luxury Journey</label>
+                    </div>
+                </div>
+                <div class="packing-list-output"></div>
+            </div>
+        </div>
+    </section>
+
     <!-- ============ FOOTER ============ -->
     <footer class="site-footer" role="contentinfo">
         <div class="container">
@@ -1142,5 +1275,6 @@ I18N.setLang(I18N.currentLang);
     </script>
 <script src="/adrar-trip/js/refinements.js?v=9" defer></script>
 <script src="/adrar-trip/js/enhancements.js?v=9" defer></script>
+<script src="/adrar-trip/js/features-new.js?v=10" defer></script>
 </body>
 </html>

@@ -61,8 +61,9 @@
 }
     </script>
 
-    <link rel="stylesheet" href="/adrar-trip/css/refinements.css?v=8">
-    <link rel="stylesheet" href="/adrar-trip/css/enhancements.css?v=8">
+    <link rel="stylesheet" href="/adrar-trip/css/refinements.css?v=9">
+    <link rel="stylesheet" href="/adrar-trip/css/enhancements.css?v=9">
+    <link rel="stylesheet" href="/adrar-trip/css/features-new.css?v=10">
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -380,6 +381,80 @@
         </div>
     </section>
 
+    <!-- ============ INTERACTIVE MAP ============ -->
+    <section class="section-lg">
+        <div class="container">
+            <div class="text-eyebrow fade-in" data-i18n="dest.map.eyebrow">Explore Interactively</div>
+            <h2 class="heading-display heading-md fade-in stagger-1" style="margin-top: var(--space-4);" data-i18n="dest.map.title">Map of Morocco</h2>
+            <p class="text-body-lg fade-in stagger-2" style="margin-top: var(--space-3); max-width: 600px;" data-i18n="dest.map.subtitle">Click a region to explore its destinations and experiences.</p>
+            <div class="morocco-map-container fade-in stagger-3">
+                <svg class="morocco-map" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+                    <path class="region" data-region="chefchaouen" d="M200 40 L300 30 L340 70 L320 120 L260 130 L210 100 L190 60Z"/>
+                    <text class="region-label" x="265" y="85">Chefchaouen</text>
+                    <path class="region" data-region="fes" d="M320 120 L400 100 L450 140 L440 200 L380 220 L320 200 L290 160Z"/>
+                    <text class="region-label" x="370" y="165">Fes</text>
+                    <path class="region" data-region="imlil" d="M140 200 L220 180 L280 220 L270 290 L200 310 L140 280Z"/>
+                    <text class="region-label" x="205" y="255">Imlil</text>
+                    <path class="region" data-region="marrakech" d="M140 280 L200 310 L270 290 L300 340 L280 400 L200 420 L130 380 L110 320Z"/>
+                    <text class="region-label" x="200" y="360">Marrakech</text>
+                    <path class="region" data-region="essaouira" d="M40 300 L110 320 L130 380 L110 420 L50 430 L20 380Z"/>
+                    <text class="region-label" x="75" y="375">Essaouira</text>
+                    <path class="region" data-region="merzouga" d="M380 300 L480 280 L540 340 L530 430 L460 470 L380 450 L350 380Z"/>
+                    <text class="region-label" x="450" y="380">Merzouga</text>
+                </svg>
+                <div class="map-tooltip"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PHOTO GALLERY ============ -->
+    <section class="section-lg" style="background: var(--color-surface-elevated);">
+        <div class="container">
+            <div class="text-eyebrow fade-in" data-i18n="dest.gallery.eyebrow">Visual Journey</div>
+            <h2 class="heading-display heading-md fade-in stagger-1" style="margin-top: var(--space-4);" data-i18n="dest.gallery.title">Morocco Through the Lens</h2>
+            <div class="photo-gallery fade-in stagger-2">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=600&fm=webp" alt="Marrakech medina" loading="lazy">
+                    <div class="gallery-overlay"><span>Marrakech Medina</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=600&fm=webp" alt="Sahara desert dunes" loading="lazy">
+                    <div class="gallery-overlay"><span>Sahara Dunes</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1548018560-c7196e4f5baa?w=600&fm=webp" alt="Chefchaouen blue streets" loading="lazy">
+                    <div class="gallery-overlay"><span>Chefchaouen</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1504194921103-f8b80cadd5e4?w=600&fm=webp" alt="Atlas Mountains" loading="lazy">
+                    <div class="gallery-overlay"><span>Atlas Mountains</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1545071677-0a4c8e5b4e58?w=600&fm=webp" alt="Fes pottery" loading="lazy">
+                    <div class="gallery-overlay"><span>Fes Artisanry</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1553603227-2358aabe821e?w=600&fm=webp" alt="Essaouira coast" loading="lazy">
+                    <div class="gallery-overlay"><span>Essaouira Coast</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BEFORE/AFTER SLIDER ============ -->
+    <section class="section-lg">
+        <div class="container">
+            <div class="text-eyebrow fade-in" data-i18n="dest.transform.eyebrow">The Transformation</div>
+            <h2 class="heading-display heading-md fade-in stagger-1" style="margin-top: var(--space-4);" data-i18n="dest.transform.title">Before & After Your Journey</h2>
+            <p class="text-body-lg fade-in stagger-2" style="margin-top: var(--space-3); max-width: 600px; margin-bottom: var(--space-8);" data-i18n="dest.transform.subtitle">Drag the slider to see the magic we create — from ordinary moments to extraordinary memories.</p>
+            <div class="before-after-slider fade-in stagger-3">
+                <img class="before-img" src="https://images.unsplash.com/photo-1528657249085-391a39cfe6b0?w=800&fm=webp" alt="Before">
+                <img class="after-img" src="https://images.unsplash.com/photo-1548018560-c7196e4f5baa?w=800&fm=webp" alt="After">
+                <div class="slider-handle"></div>
+            </div>
+        </div>
+    </section>
+
     <!-- ============ CTA SECTION ============ -->
     <section class="section-lg" style="background: linear-gradient(135deg, var(--charcoal-800) 0%, var(--terracotta-800) 50%, var(--indigo-700) 100%); position: relative; overflow: hidden;">
         <div style="position: absolute; inset: 0; opacity: 0.04; background-image: url('data:image/svg+xml,%3Csvg width=%27100%27 height=%27100%27 viewBox=%270 0 100 100%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cg fill=%27none%27 stroke=%27%23ffd354%27 stroke-width=%270.5%27%3E%3Cpath d=%27M50 0L100 50L50 100L0 50Z%27/%3E%3Cpath d=%27M50 15L85 50L50 85L15 50Z%27/%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%278%27/%3E%3C/g%3E%3C/svg%3E'); pointer-events: none;"></div>
@@ -479,6 +554,7 @@
         });
     </script>
 <script src="/adrar-trip/js/refinements.js?v=9" defer></script>
-<script src="/adrar-trip/js/enhancements.js?v=8" defer></script>
+<script src="/adrar-trip/js/enhancements.js?v=9" defer></script>
+<script src="/adrar-trip/js/features-new.js?v=10" defer></script>
 </body>
 </html>
