@@ -551,6 +551,8 @@
   }
 
   function showToast(message) {
+    // One toast at a time — they are fixed-position and would stack invisibly.
+    document.querySelectorAll('.toast-notification').forEach(t => t.remove());
     const toast = document.createElement('div');
     toast.className = 'toast-notification';
     toast.setAttribute('role', 'status');
