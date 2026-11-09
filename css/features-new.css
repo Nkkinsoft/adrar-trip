@@ -309,6 +309,46 @@
     inset-inline-end: var(--space-6);
 }
 
+/* Controls are real buttons now, so cancel the UA default chrome. */
+.lightbox-close,
+.lightbox-nav {
+    appearance: none;
+    border: 0;
+    padding: 0;
+    font-family: inherit;
+    line-height: 1;
+}
+
+.lightbox-close:focus-visible,
+.lightbox-nav:focus-visible {
+    outline: 2px solid var(--gold-400);
+    outline-offset: 3px;
+}
+
+.lightbox-figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.lightbox-caption {
+    color: rgba(255,255,255,0.8);
+    font-size: var(--text-sm);
+    letter-spacing: 0.04em;
+    text-align: center;
+}
+
+.gallery-item[role="button"] {
+    cursor: pointer;
+}
+
+.gallery-item[role="button"]:focus-visible {
+    outline: 2px solid var(--gold-400);
+    outline-offset: 4px;
+}
+
 /* --- BEFORE/AFTER SLIDER --- */
 .before-after-slider {
     position: relative;
@@ -342,6 +382,16 @@
     background: #fff;
     transform: translateX(-50%);
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    cursor: grab;
+}
+
+.before-after-slider .slider-handle:active {
+    cursor: grabbing;
+}
+
+.before-after-slider .slider-handle:focus-visible {
+    outline: 3px solid var(--gold-400);
+    outline-offset: 3px;
 }
 
 .before-after-slider .slider-handle::after {
@@ -448,6 +498,14 @@
 
 .newsletter-form button:hover {
     background: var(--gold-300);
+}
+
+/* .is-success wins over :hover on specificity, so the confirmation stays green
+   while the pointer is still over the button. Text keeps the base charcoal,
+   which clears 4.5:1 on the success green in both themes. */
+.newsletter-form button.is-success,
+.newsletter-form button.is-success:hover {
+    background: var(--color-success);
 }
 
 /* --- TRUST BADGES --- */
@@ -693,5 +751,158 @@
         inset-inline-end: var(--space-4);
         width: 50px;
         height: 50px;
+    }
+}
+
+
+/* ============ TOAST + COMPARE PANEL ============ */
+
+.toast-notification {
+    position: fixed;
+    inset-block-end: var(--space-24);
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    background: var(--color-surface-dark);
+    color: var(--color-text-inverse);
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border-light);
+    box-shadow: var(--shadow-lg);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    letter-spacing: 0.01em;
+    z-index: 9999;
+    max-inline-size: min(80vw, 32rem);
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.toast-notification.is-hidden {
+    opacity: 0;
+}
+
+[dir="rtl"] .toast-notification {
+    transform: translateX(50%);
+}
+
+.tb-compare-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-6);
+    margin-block-start: var(--space-8);
+    padding: var(--space-8);
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+}
+
+.tb-compare-empty {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--text-base);
+    text-align: center;
+}
+
+.tb-compare-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+}
+
+.tb-compare-card.is-current {
+    border-color: var(--gold-400);
+    box-shadow: var(--shadow-gold);
+}
+
+.tb-compare-title {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--gold-600);
+}
+
+.tb-compare-list {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    flex: 1;
+}
+
+.tb-compare-list div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding-block-end: var(--space-3);
+    border-block-end: 1px solid var(--color-border-light);
+}
+
+.tb-compare-list dt {
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+}
+
+.tb-compare-list dd {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--color-text);
+}
+
+.tb-compare-load,
+.tb-compare-clear {
+    appearance: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-4);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.tb-compare-load {
+    background: transparent;
+    border: 1px solid var(--gold-400);
+    color: var(--gold-600);
+}
+
+.tb-compare-load:hover {
+    background: var(--gold-50);
+}
+
+.tb-compare-clear {
+    grid-column: 1 / -1;
+    justify-self: center;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+}
+
+.tb-compare-clear:hover {
+    border-color: var(--color-text-secondary);
+    color: var(--color-text);
+}
+
+.tb-compare-load:focus-visible,
+.tb-compare-clear:focus-visible,
+.toast-notification:focus-visible {
+    outline: 2px solid var(--gold-400);
+    outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+    .tb-compare-panel {
+        padding: var(--space-6);
+        gap: var(--space-4);
     }
 }

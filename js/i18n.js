@@ -578,6 +578,7 @@ const I18N = {
       if (parts.length === 2) {
         const attr = parts[0].trim();
         const key = parts[1].trim();
+        if (!this.translations[key]) return;
         el.setAttribute(attr, this.t(key));
       }
     });

@@ -161,47 +161,79 @@
   if (galleries.length) {
     const lightbox = document.createElement('div');
     lightbox.className = 'lightbox';
-    lightbox.innerHTML = 
-      '<div class="lightbox-close" aria-label="Close">&times;</div>' +
-      '<div class="lightbox-prev lightbox-nav" aria-label="Previous">&#8249;</div>' +
-      '<img src="" alt="Gallery image">' +
-      '<div class="lightbox-next lightbox-nav" aria-label="Next">&#8250;</div>';
+    lightbox.setAttribute('role', 'dialog');
+    lightbox.setAttribute('aria-modal', 'true');
+    lightbox.setAttribute('aria-label', I18N.t('gallery.lightbox'));
+    lightbox.innerHTML =
+      '<button type="button" class="lightbox-close" aria-label="' + esc(I18N.t('gallery.close')) + '">&times;</button>' +
+      '<button type="button" class="lightbox-nav lightbox-prev" aria-label="' + esc(I18N.t('gallery.prev')) + '">&#8249;</button>' +
+      '<figure class="lightbox-figure"><img src="" alt=""><figcaption class="lightbox-caption"></figcaption></figure>' +
+      '<button type="button" class="lightbox-nav lightbox-next" aria-label="' + esc(I18N.t('gallery.next')) + '">&#8250;</button>';
     document.body.appendChild(lightbox);
 
+    const lbImg = lightbox.querySelector('img');
+    const lbCaption = lightbox.querySelector('.lightbox-caption');
     let currentImages = [];
+    let currentAlts = [];
     let currentIndex = 0;
+    let lastFocused = null;
 
-    galleries.forEach(gallery => {
-      const items = gallery.querySelectorAll('.gallery-item');
-      items.forEach((item, idx) => {
-        item.addEventListener('click', () => {
-          currentImages = Array.from(items).map(i => i.querySelector('img').src);
-          currentIndex = idx;
-          openLightbox();
-        });
-      });
-    });
+    function show() {
+      lbImg.src = currentImages[currentIndex];
+      lbImg.alt = currentAlts[currentIndex];
+      lbCaption.textContent = currentAlts[currentIndex];
+    }
 
-    function openLightbox() {
+    function openLightbox(idx, items) {
+      currentImages = Array.prototype.map.call(items, i => i.querySelector('img').src);
+      currentAlts = Array.prototype.map.call(items, i => i.querySelector('img').alt);
+      currentIndex = idx;
+      lastFocused = document.activeElement;
+      show();
       lightbox.classList.add('open');
-      lightbox.querySelector('img').src = currentImages[currentIndex];
       document.body.style.overflow = 'hidden';
+      lightbox.querySelector('.lightbox-close').focus();
     }
 
     function closeLightbox() {
       lightbox.classList.remove('open');
       document.body.style.overflow = '';
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
     }
 
     function navigate(dir) {
       currentIndex = (currentIndex + dir + currentImages.length) % currentImages.length;
-      lightbox.querySelector('img').src = currentImages[currentIndex];
+      show();
     }
+
+    galleries.forEach(gallery => {
+      const items = gallery.querySelectorAll('.gallery-item');
+      items.forEach((item, idx) => {
+        const img = item.querySelector('img');
+        item.setAttribute('role', 'button');
+        item.setAttribute('tabindex', '0');
+        item.setAttribute('aria-label', img ? img.alt : '');
+        item.addEventListener('click', () => openLightbox(idx, items));
+        item.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(idx, items); }
+        });
+      });
+    });
 
     lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
     lightbox.querySelector('.lightbox-prev').addEventListener('click', () => navigate(-1));
     lightbox.querySelector('.lightbox-next').addEventListener('click', () => navigate(1));
     lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+    // Keep Tab inside the dialog while it is open.
+    lightbox.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const controls = lightbox.querySelectorAll('button');
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
+      else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
+    });
 
     document.addEventListener('keydown', (e) => {
       if (!lightbox.classList.contains('open')) return;
@@ -217,14 +249,35 @@
     const handle = slider.querySelector('.slider-handle');
     const afterImg = slider.querySelector('.after-img');
     let isDragging = false;
+    let percent = 50;
+
+    handle.setAttribute('role', 'slider');
+    handle.setAttribute('tabindex', '0');
+    handle.setAttribute('aria-orientation', 'horizontal');
+    handle.setAttribute('aria-valuemin', '0');
+    handle.setAttribute('aria-valuemax', '100');
+    handle.setAttribute('aria-label', I18N.t('dest.transform.slider'));
+
+    function setPercent(value) {
+      percent = Math.max(0, Math.min(100, value));
+      handle.style.left = percent + '%';
+      afterImg.style.clipPath = 'inset(0 ' + (100 - percent) + '% 0 0)';
+      handle.setAttribute('aria-valuenow', Math.round(percent));
+      handle.setAttribute('aria-valuetext', Math.round(percent) + '%');
+    }
 
     function updateSlider(x) {
       const rect = slider.getBoundingClientRect();
-      let percent = ((x - rect.left) / rect.width) * 100;
-      percent = Math.max(0, Math.min(100, percent));
-      handle.style.left = percent + '%';
-      afterImg.style.clipPath = 'inset(0 ' + (100 - percent) + '% 0 0)';
+      setPercent(((x - rect.left) / rect.width) * 100);
     }
+
+    handle.addEventListener('keydown', (e) => {
+      const step = e.shiftKey ? 10 : 2;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { setPercent(percent + step); e.preventDefault(); }
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { setPercent(percent - step); e.preventDefault(); }
+      else if (e.key === 'Home') { setPercent(0); e.preventDefault(); }
+      else if (e.key === 'End') { setPercent(100); e.preventDefault(); }
+    });
 
     slider.addEventListener('mousedown', (e) => {
       isDragging = true;
@@ -254,6 +307,8 @@
     slider.addEventListener('touchend', () => {
       isDragging = false;
     });
+
+    setPercent(50);
   });
 
   /* ---------- 5. WHATSAPP FLOATING BUTTON ---------- */
@@ -296,12 +351,12 @@
       btn.disabled = true;
 
       setTimeout(() => {
-        btn.textContent = { en: 'Subscribed!', fr: 'Inscrit!', es: '¡Suscrito!', ar: 'مشترك!' }[lang] || 'Subscribed!';
-        btn.style.background = '#22c55e';
+        btn.textContent = tr({ en: 'Subscribed!', fr: 'Inscrit!', es: '¡Suscrito!', ar: 'مشترك!' });
+        btn.classList.add('is-success');
         form.querySelector('input').value = '';
         setTimeout(() => {
           btn.textContent = originalText;
-          btn.style.background = '';
+          btn.classList.remove('is-success');
           btn.disabled = false;
         }, 2000);
       }, 800);
@@ -314,29 +369,30 @@
     const options = packingGenerator.querySelectorAll('.packing-option input[type="checkbox"]');
     const output = packingGenerator.querySelector('.packing-list-output');
 
+    // Slugs only — the copy itself lives in page-translations.js under pack.*
     const packingItems = {
-      desert: ['Lightweight breathable clothing', 'Sun hat or turban', 'Sunglasses (UV protection)', 'Sunscreen SPF 50+', 'Closed-toe sandals', 'Scarf for sand/dust', 'Reusable water bottle', 'Camera with dust cover'],
-      city: ['Smart casual clothing', 'Comfortable walking shoes', 'Crossbody bag (secure)', 'Modest clothing for mosques', 'Umbrella (seasonal)', 'Portable phone charger', 'Phrasebook or translation app', 'Small daypack'],
-      mountains: ['Layered clothing system', 'Hiking boots (broken in)', 'Warm fleece or jacket', 'Rain jacket (waterproof)', 'Thermal base layers', 'Trekking poles (optional)', 'First aid kit', 'High-energy snacks'],
-      beach: ['Swimwear', 'Beach towel (quick-dry)', 'Flip flops', 'Water shoes', 'Beach cover-up', 'Waterproof phone pouch', 'Aloe vera gel', 'Beach bag (mesh)'],
-      luxury: ['Evening wear (smart)', 'Fine jewelry (tasteful)', 'Designer sunglasses', 'Leather accessories', 'Cocktail attire', 'Polished shoes', 'Elegant scarf or tie', 'Small clutch bag']
+      desert: ['clothing', 'hat', 'sunglasses', 'sunscreen', 'sandals', 'scarf', 'water', 'camera'],
+      city: ['clothing', 'shoes', 'bag', 'modest', 'umbrella', 'charger', 'phrasebook', 'daypack'],
+      mountains: ['layers', 'boots', 'fleece', 'rain', 'thermal', 'poles', 'kit', 'snacks'],
+      beach: ['swimwear', 'towel', 'flipflops', 'waterShoes', 'coverup', 'pouch', 'aloe', 'bag'],
+      luxury: ['evening', 'jewelry', 'sunglasses', 'leather', 'cocktail', 'shoes', 'scarf', 'clutch']
     };
 
-    const essentials = ['Passport (6+ months validity)', 'Travel insurance documents', 'Visa (if required)', 'Flight confirmations', 'Hotel reservations', 'Emergency contact list', 'Moroccan Dirham (cash)', 'Credit/debit cards', 'Copies of all documents', 'Basic first aid supplies', 'Any prescription medications', 'Hand sanitizer', 'Tissues/wet wipes', 'Universal power adapter', 'Reusable shopping bag'];
+    const essentials = ['passport', 'insurance', 'visa', 'flights', 'hotels', 'emergency', 'cash', 'cards', 'copies', 'firstaid', 'meds', 'sanitizer', 'wipes', 'adapter', 'bag'];
 
     function updatePackingList() {
       const selected = Array.from(options).filter(o => o.checked).map(o => o.name);
-      let items = [...essentials];
-      
+      let items = essentials.map(k => I18N.t('pack.essential.' + k));
+
       selected.forEach(category => {
         if (packingItems[category]) {
-          items = items.concat(packingItems[category]);
+          items = items.concat(packingItems[category].map(k => I18N.t('pack.' + category + '.' + k)));
         }
       });
 
       if (output) {
-        const title = { en: 'Your Packing List', fr: 'Votre liste de bagages', es: 'Tu lista de equipaje', ar: 'قائمة أمتعتك' }[lang] || 'Your Packing List';
-        output.innerHTML = '<h4>' + title + '</h4><ul>' + items.map(item => '<li>' + item + '</li>').join('') + '</ul>';
+        output.innerHTML = '<h4>' + esc(I18N.t('pack.title')) + '</h4><ul>' +
+          items.map(item => '<li>' + esc(item) + '</li>').join('') + '</ul>';
       }
     }
 
@@ -370,30 +426,118 @@
 
   if (exportBtn) {
     exportBtn.addEventListener('click', () => {
-      const printContent = document.querySelector('.tb-result-timeline') || document.querySelector('main');
-      if (!printContent) return;
+      const collected = collectDays();
+      if (collected.days.length === 0) {
+        showToast(tr({
+          en: 'Generate an itinerary first, then export it.',
+          fr: 'Générez d\'abord un itinéraire, puis exportez-le.',
+          es: 'Genera primero un itinerario y luego expórtalo.',
+          ar: 'أنشئ برنامجك أولاً ثم صدّره.'
+        }));
+        return;
+      }
 
       const printWindow = window.open('', '_blank');
+      if (!printWindow) {
+        showToast(tr({
+          en: 'Allow pop-ups to export your itinerary.',
+          fr: 'Autorisez les pop-ups pour exporter votre itinéraire.',
+          es: 'Permite las ventanas emergentes para exportar tu itinerario.',
+          ar: 'اسمح بالنوافذ المنبثقة لتصدير رحلتك.'
+        }));
+        return;
+      }
+
+      const accent = getComputedStyle(document.documentElement)
+        .getPropertyValue('--color-primary').trim() || '#D4653B';
+      const heading = tr({
+        en: 'Your Morocco Itinerary',
+        fr: 'Votre itinéraire du Maroc',
+        es: 'Tu itinerario por Marruecos',
+        ar: 'برنامج رحلتك في المغرب'
+      });
+
+      const body = collected.days.map(function (d) {
+        return '<article class="day">' +
+          '<h3>' + d.label + '</h3>' +
+          (d.place ? '<p class="place">' + d.place + '</p>' : '') +
+          (d.desc ? '<p class="desc">' + d.desc + '</p>' : '') +
+          '</article>';
+      }).join('');
+
       printWindow.document.write(
-        '<!DOCTYPE html><html><head><title>My Morocco Itinerary</title>' +
-        '<style>body{font-family:Georgia,serif;padding:40px;max-width:800px;margin:0 auto;}' +
-        'h1{color:#c46a35;border-bottom:2px solid #c46a35;padding-bottom:10px;}' +
-        '.day{margin:30px 0;padding:20px;background:#f9f9f9;border-left:4px solid #c46a35;}' +
-        '.day h3{margin:0 0 10px;color:#1a1a1f;}' +
-        '@media print{body{padding:20px;}}</style></head><body>'
+        '<!DOCTYPE html><html lang="' + document.documentElement.lang + '" dir="' +
+        (document.documentElement.dir || 'ltr') + '"><head><meta charset="utf-8"><title>' +
+        esc(heading) + '</title><style>' +
+        'body{font-family:Georgia,"Times New Roman",serif;padding:48px;max-width:800px;margin:0 auto;color:#1C1917;background:#fff;}' +
+        '.brand{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:' + accent + ';margin:0 0 8px;}' +
+        'h1{font-size:28px;font-weight:400;color:' + accent + ';border-bottom:2px solid ' + accent + ';padding-bottom:12px;margin:0 0 32px;}' +
+        '.day{break-inside:avoid;margin:0 0 24px;padding:20px 24px;background:#faf8f5;border-inline-start:4px solid ' + accent + ';}' +
+        '.day h3{margin:0 0 6px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#78716c;font-weight:400;}' +
+        '.place{margin:0 0 8px;font-size:20px;}' +
+        '.desc{margin:0;font-size:15px;line-height:1.6;color:#44403c;}' +
+        '.summary{margin:0 0 28px;font-size:14px;color:#57534e;}' +
+        '@media print{body{padding:0;}.day{background:#fff;border:1px solid #e7e5e4;border-inline-start:4px solid ' + accent + ';}}' +
+        '</style></head><body>' +
+        '<p class="brand">Adrar Voyages</p><h1>' + esc(heading) + '</h1>' +
+        (collected.summary ? '<p class="summary">' + collected.summary + '</p>' : '') + body +
+        '</body></html>'
       );
-      printWindow.document.write('<h1>Your Morocco Itinerary</h1>');
-      printWindow.document.write(printContent.innerHTML);
-      printWindow.document.write('</body></html>');
       printWindow.document.close();
-      setTimeout(() => printWindow.print(), 500);
+      setTimeout(() => { try { printWindow.focus(); printWindow.print(); } catch (e) {} }, 400);
     });
+  }
+
+  function esc(str) {
+    return String(str).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  // The two wizard generations render results differently: the rebuilt page
+  // writes .tb-result-day blocks into #tbTimeline, the legacy overlay gets a
+  // .journey-result list from AdrarJourney().
+  function collectDays() {
+    const tbDays = document.querySelectorAll('.tb-result-day');
+    if (tbDays.length) {
+      return {
+        summary: '',
+        days: Array.prototype.map.call(tbDays, function (day) {
+          const text = function (sel) {
+            const el = day.querySelector(sel);
+            return el ? esc(el.textContent.trim()) : '';
+          };
+          return {
+            label: text('.tb-result-day-label'),
+            place: text('.tb-result-day-place'),
+            desc: text('.tb-result-day-desc')
+          };
+        })
+      };
+    }
+
+    const result = document.querySelector('.journey-result');
+    if (!result) return { summary: '', days: [] };
+
+    const dayWord = tr({ en: 'Day', fr: 'Jour', es: 'Día', ar: 'يوم' });
+    const summaryEl = result.querySelector('p');
+    const days = Array.prototype.map.call(result.querySelectorAll('li'), function (li) {
+      const parts = li.textContent.split('·');
+      const range = (parts[0] || '').trim();
+      const place = parts.length > 1 ? parts.slice(1).join('·').trim() : '';
+      return {
+        label: esc(range ? dayWord + ' ' + range : ''),
+        place: esc(place || range),
+        desc: ''
+      };
+    });
+    return { summary: summaryEl ? esc(summaryEl.textContent.trim()) : '', days: days };
   }
 
   function copyToClipboard(text) {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text).then(() => {
-        showToast({ en: 'Link copied!', fr: 'Lien copié!', es: '¡Enlace copiado!', ar: 'تم النسخ!' }[lang] || 'Link copied!');
+        showToast(tr({ en: 'Link copied!', fr: 'Lien copié!', es: '¡Enlace copiado!', ar: 'تم النسخ!' }));
       });
     } else {
       const textarea = document.createElement('textarea');
@@ -402,112 +546,269 @@
       textarea.select();
       document.execCommand('copy');
       document.body.removeChild(textarea);
-      showToast({ en: 'Link copied!', fr: 'Lien copié!', es: '¡Enlace copiado!', ar: 'تم النسخ!' }[lang] || 'Link copied!');
+      showToast(tr({ en: 'Link copied!', fr: 'Lien copié!', es: '¡Enlace copiado!', ar: 'تم النسخ!' }));
     }
   }
 
   function showToast(message) {
     const toast = document.createElement('div');
     toast.className = 'toast-notification';
+    toast.setAttribute('role', 'status');
     toast.textContent = message;
-    toast.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#1a1a1f;color:#fff;padding:12px 24px;border-radius:8px;z-index:9999;animation:fadeInUp 0.3s;';
     document.body.appendChild(toast);
     setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transition = 'opacity 0.3s';
+      toast.classList.add('is-hidden');
       setTimeout(() => toast.remove(), 300);
-    }, 2000);
+    }, 2600);
   }
 
   /* ---------- 9. SAVE DRAFT / COMPARE / SURPRISE ME ---------- */
+  // Two wizard generations ship side by side: the rebuilt page uses .tb-*-card
+  // grids, fr/es/ar still render the legacy .step-panel wizard. Both store the
+  // same data-value vocabulary, so saved drafts travel between them.
+  // Cards label their text inconsistently (-tier holds the budget name, -days
+  // the number, -label the unit), so each step names its own label element.
+  var NEW_WIZARD_STEPS = [
+    { key: 'interests', sel: '.tb-interest-card', multi: true, labelSel: '.tb-interest-card-label' },
+    { key: 'style', sel: '.tb-style-card', labelSel: '.tb-style-card-label' },
+    { key: 'duration', sel: '.tb-duration-card', labelSel: '.tb-duration-days', joinSel: '.tb-duration-label', joinWith: ' ' },
+    { key: 'season', sel: '.tb-season-card', labelSel: '.tb-season-card-name', joinSel: '.tb-season-card-months', joinWith: ' · ' },
+    { key: 'travelers', sel: '.tb-traveler-card', labelSel: '.tb-traveler-label' },
+    { key: 'budget', sel: '.tb-budget-card', labelSel: '.tb-budget-tier' }
+  ];
+  var LEGACY_WIZARD_STEPS = [
+    { key: 'interests', sel: '[data-panel="1"] .builder-option', multi: true, labelSel: 'span' },
+    { key: 'style', sel: '[data-panel="2"] .builder-option', multi: true, labelSel: 'span' },
+    { key: 'duration', sel: '[data-panel="3"] .duration-chip' },
+    { key: 'season', sel: '[data-panel="4"] .duration-chip' },
+    { key: 'travelers', sel: '[data-panel="5"] .number-option', labelSel: '.num-label' },
+    { key: 'budget', sel: '[data-panel="6"] .budget-option', labelSel: '.budget-name' }
+  ];
+  var WIZARD_STEPS = document.querySelector('.tb-interest-card')
+    ? NEW_WIZARD_STEPS
+    : (document.querySelector('.step-panel') ? LEGACY_WIZARD_STEPS : []);
+  var DRAFT_KEY = 'adrar-trip-drafts';
+  var MAX_DRAFTS = 4;
+
+  var STEP_LABELS = {
+    interests: { en: 'Interests', fr: 'Centres d\'intérêt', es: 'Intereses', ar: 'الاهتمامات' },
+    style: { en: 'Style', fr: 'Style', es: 'Estilo', ar: 'الأسلوب' },
+    duration: { en: 'Duration', fr: 'Durée', es: 'Duración', ar: 'المدة' },
+    season: { en: 'Season', fr: 'Saison', es: 'Temporada', ar: 'الموسم' },
+    travelers: { en: 'Travelers', fr: 'Voyageurs', es: 'Viajeros', ar: 'المسافرون' },
+    budget: { en: 'Budget', fr: 'Budget', es: 'Presupuesto', ar: 'الميزانية' }
+  };
+
+  function tr(map) { return (map && (map[lang] || map.en)) || ''; }
+
+  function cardLabel(step, card) {
+    var main = card.querySelector(step.labelSel);
+    if (!main) return card.textContent.trim().replace(/\s+/g, ' ');
+    var text = main.textContent.trim().replace(/\s+/g, ' ');
+    if (step.joinSel) {
+      var extra = card.querySelector(step.joinSel);
+      if (extra) {
+        var extraText = extra.textContent.trim().replace(/\s+/g, ' ');
+        if (extraText) text += step.joinWith + extraText;
+      }
+    }
+    return text;
+  }
+
+  function readWizard() {
+    var state = {};
+    WIZARD_STEPS.forEach(function (step) {
+      var picked = [];
+      document.querySelectorAll(step.sel + '.selected').forEach(function (card) {
+        picked.push(card.dataset.value);
+      });
+      state[step.key] = step.multi ? picked : (picked[0] || null);
+    });
+    return state;
+  }
+
+  function isStepEmpty(state) {
+    return WIZARD_STEPS.every(function (s) {
+      var v = state[s.key];
+      return !v || (Array.isArray(v) && v.length === 0);
+    });
+  }
+
+  // Clicks only the cards whose selected state differs, so multi- and
+  // single-select handlers both behave correctly.
+  function applyWizard(state) {
+    var applied = 0;
+    WIZARD_STEPS.forEach(function (step) {
+      var v = state[step.key];
+      if (!v || (Array.isArray(v) && v.length === 0)) return;
+      var wanted = Array.isArray(v) ? v : [v];
+      document.querySelectorAll(step.sel).forEach(function (card) {
+        var shouldBe = wanted.indexOf(card.dataset.value) !== -1;
+        if (shouldBe !== card.classList.contains('selected')) {
+          card.click();
+          applied++;
+        }
+      });
+    });
+    return applied;
+  }
+
+  function wizardRows(state) {
+    var rows = [];
+    WIZARD_STEPS.forEach(function (step) {
+      var v = state[step.key];
+      var values = Array.isArray(v) ? v : (v ? [v] : []);
+      var text = values.map(function (value) {
+        var card = document.querySelector(step.sel + '[data-value="' + value + '"]');
+        return card ? cardLabel(step, card) : value;
+      }).join(', ');
+      rows.push({ label: tr(STEP_LABELS[step.key]), value: text || '—' });
+    });
+    return rows;
+  }
+
+  function loadDrafts() {
+    try {
+      var raw = localStorage.getItem(DRAFT_KEY);
+      var list = raw ? JSON.parse(raw) : [];
+      return Array.isArray(list) ? list : [];
+    } catch (e) { return []; }
+  }
+
+  function persistDrafts(list) {
+    try {
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(list.slice(-MAX_DRAFTS)));
+      return true;
+    } catch (e) { return false; }
+  }
+
   const saveDraftBtn = document.getElementById('saveDraftBtn');
   const compareBtn = document.getElementById('compareBtn');
   const surpriseMeBtn = document.getElementById('surpriseMeBtn');
 
   if (saveDraftBtn) {
     saveDraftBtn.addEventListener('click', () => {
-      const wizardState = {};
-      document.querySelectorAll('.tb-wizard-step').forEach(function(step, i) {
-        var active = step.querySelector('.tb-option.active');
-        if (active) wizardState['step' + i] = active.dataset.value || active.textContent.trim();
-      });
-      var travelersInput = document.getElementById('tb-travelers');
-      if (travelersInput) wizardState.travelers = travelersInput.value;
-      var dateInputs = document.querySelectorAll('.tb-date-input');
-      dateInputs.forEach(function(d, i) { wizardState['date' + i] = d.value; });
-      try {
-        localStorage.setItem('adrar-trip-draft', JSON.stringify(wizardState));
-        showToast({ en: 'Draft saved!', fr: 'Brouillon enregistré!', es: '¡Borrador guardado!', ar: 'تم حفظ المسودة!' }[lang] || 'Draft saved!');
-      } catch(e) {
-        showToast({ en: 'Could not save draft', fr: 'Impossible de sauvegarder', es: 'No se pudo guardar', ar: 'تعذر الحفظ' }[lang] || 'Could not save draft');
+      var current = readWizard();
+      if (isStepEmpty(current)) {
+        showToast(tr({
+          en: 'Pick at least one option first.',
+          fr: 'Choisissez au moins une option.',
+          es: 'Elige al menos una opción.',
+          ar: 'اختر خيارًا واحدًا على الأقل أولاً.'
+        }));
+        return;
+      }
+      var list = loadDrafts();
+      list.push({ savedAt: Date.now(), state: current });
+      if (persistDrafts(list)) {
+        showToast(tr({
+          en: 'Journey saved — ' + list.length + ' saved',
+          fr: 'Itinéraire enregistré — ' + list.length + ' enregistrés',
+          es: 'Itinerario guardado — ' + list.length + ' guardados',
+          ar: 'تم حفظ الرحلة — ' + list.length + ' محفوظة'
+        }));
+      } else {
+        showToast(tr({
+          en: 'Could not save draft',
+          fr: 'Impossible de sauvegarder',
+          es: 'No se pudo guardar',
+          ar: 'تعذر الحفظ'
+        }));
       }
     });
-
-    // Restore draft on page load
-    try {
-      var savedDraft = localStorage.getItem('adrar-trip-draft');
-      if (savedDraft) {
-        var draft = JSON.parse(savedDraft);
-        document.querySelectorAll('.tb-wizard-step').forEach(function(step, i) {
-          var key = 'step' + i;
-          if (draft[key]) {
-            var options = step.querySelectorAll('.tb-option');
-            options.forEach(function(opt) {
-              if ((opt.dataset.value || opt.textContent.trim()) === draft[key]) {
-                opt.click();
-              }
-            });
-          }
-        });
-      }
-    } catch(e) {}
   }
 
   if (compareBtn) {
     compareBtn.addEventListener('click', () => {
-      var saved = [];
-      try {
-        var d = localStorage.getItem('adrar-trip-draft');
-        if (d) saved = [JSON.parse(d)];
-      } catch(e) {}
-      if (saved.length === 0) {
-        showToast({ en: 'No saved drafts to compare. Save one first!', fr: 'Aucun brouillon à comparer.', es: 'No hay borradores para comparar.', ar: 'لا توجد مسودات للمقارنة.' }[lang] || 'No saved drafts to compare.');
+      var drafts = loadDrafts();
+      var panel = document.querySelector('.tb-compare-panel');
+      if (!panel) {
+        panel = document.createElement('div');
+        panel.className = 'tb-compare-panel';
+        panel.setAttribute('role', 'region');
+        panel.setAttribute('aria-live', 'polite');
+        var host = compareBtn.closest('.container') || compareBtn.parentElement.parentElement;
+        host.appendChild(panel);
+      }
+      if (drafts.length === 0) {
+        panel.innerHTML = '<p class="tb-compare-empty">' + tr({
+          en: 'No saved journeys yet. Build a trip and tap Save Journey.',
+          fr: 'Aucun itinéraire enregistré. Créez un voyage et touchez Enregistrer.',
+          es: 'Aún no hay itinerarios guardados. Crea un viaje y pulsa Guardar.',
+          ar: 'لا توجد رحلات محفوظة. أنشئ رحلة ثم اضغط حفظ.'
+        }) + '</p>';
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         return;
       }
-      var current = {};
-      document.querySelectorAll('.tb-wizard-step').forEach(function(step, i) {
-        var active = step.querySelector('.tb-option.active');
-        if (active) current['step' + i] = active.dataset.value || active.textContent.trim();
+
+      var headings = {
+        current: tr({ en: 'Current', fr: 'Actuel', es: 'Actual', ar: 'الحالي' }),
+        saved: tr({ en: 'Saved', fr: 'Enregistré', es: 'Guardado', ar: 'محفوظ' }),
+        load: tr({ en: 'Load', fr: 'Charger', es: 'Cargar', ar: 'تحميل' }),
+        clear: tr({ en: 'Clear all', fr: 'Tout effacer', es: 'Borrar todo', ar: 'مسح الكل' }),
+        today: tr({ en: 'today', fr: "aujourd'hui", es: 'hoy', ar: 'اليوم' })
+      };
+
+      var columns = drafts.map(function (draft, i) {
+        var age = Math.floor((Date.now() - draft.savedAt) / 86400000);
+        var when = age <= 0 ? headings.today : age + 'd';
+        return {
+          title: headings.saved + ' ' + (i + 1) + ' · ' + when,
+          state: draft.state,
+          index: i,
+          isCurrent: false
+        };
       });
-      var msg = { en: 'Current: ', fr: 'Actuel: ', es: 'Actual: ', ar: 'الحالي: ' }[lang] || 'Current: ';
-      msg += JSON.stringify(current, null, 0);
-      showToast(msg);
+      columns.push({ title: headings.current, state: readWizard(), index: -1, isCurrent: true });
+
+      panel.innerHTML = columns.map(function (col) {
+        return '<div class="tb-compare-card' + (col.isCurrent ? ' is-current' : '') + '">' +
+          '<h3 class="tb-compare-title">' + col.title + '</h3>' +
+          '<dl class="tb-compare-list">' +
+          wizardRows(col.state).map(function (row) {
+            return '<div><dt>' + row.label + '</dt><dd>' + row.value + '</dd></div>';
+          }).join('') +
+          '</dl>' +
+          (col.isCurrent ? '' : '<button type="button" class="tb-compare-load" data-load="' + col.index + '">' + headings.load + '</button>') +
+          '</div>';
+      }).join('') +
+      '<button type="button" class="tb-compare-clear">' + headings.clear + '</button>';
+
+      panel.querySelectorAll('[data-load]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var draft = drafts[Number(btn.dataset.load)];
+          if (draft) applyWizard(draft.state);
+          panel.querySelectorAll('.tb-compare-card').forEach(function (c) { c.classList.remove('is-current'); });
+          panel.querySelector('.tb-compare-card:last-of-type').classList.add('is-current');
+          showToast(tr({
+            en: 'Journey loaded into the builder.',
+            fr: 'Itinéraire chargé dans le constructeur.',
+            es: 'Itinerario cargado en el creador.',
+            ar: 'تم تحميل الرحلة في منشئ الرحلة.'
+          }));
+        });
+      });
+      panel.querySelector('.tb-compare-clear').addEventListener('click', function () {
+        try { localStorage.removeItem(DRAFT_KEY); } catch (e) {}
+        panel.remove();
+        compareBtn.click();
+      });
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
   }
 
   if (surpriseMeBtn) {
     var surprisePresets = [
-      { steps: ['cultural', 'mid-range', 'couple', 'spring', '7', 'mixed'], label: { en: 'Romantic Imperial Cities', fr: 'Villes impériales romantiques', es: 'Ciudades imperiales románticas', ar: 'المدن الإمبراطورية الرومانسية' } },
-      { steps: ['adventure', 'budget', 'solo', 'autumn', '10', 'adventure'], label: { en: 'Atlas & Sahara Explorer', fr: 'Explorateur Atlas & Sahara', es: 'Explorador Atlas y Sahara', ar: 'مستكشف الأطلس والصحراء' } },
-      { steps: ['culinary', 'luxury', 'couple', 'winter', '5', 'cultural'], label: { en: 'Luxury Culinary Escape', fr: 'Escapade culinaire de luxe', es: 'Escapada culinaria de lujo', ar: 'هروب الطهي الفاخر' } },
-      { steps: ['photography', 'mid-range', 'family', 'spring', '14', 'mixed'], label: { en: 'Grand Morocco Photo Tour', fr: 'Tour photo du Grand Maroc', es: 'Tour fotográfico del Gran Marruecos', ar: 'جولة تصوير المغرب الكبير' } }
+      { state: { interests: ['history', 'art'], style: 'romantic', duration: '6-8', season: 'spring', travelers: 'couple', budget: 'comfort' }, label: { en: 'Romantic Imperial Cities', fr: 'Villes impériales romantiques', es: 'Ciudades imperiales románticas', ar: 'المدن الإمبراطورية الرومانسية' } },
+      { state: { interests: ['desert', 'adventure'], style: 'authentic', duration: '9-12', season: 'autumn', travelers: 'small-group', budget: 'essential' }, label: { en: 'Atlas & Sahara Explorer', fr: 'Explorateur Atlas & Sahara', es: 'Explorador Atlas y Sahara', ar: 'مستكشف الأطلس والصحراء' } },
+      { state: { interests: ['food', 'wellness'], style: 'luxury', duration: '3-5', season: 'winter', travelers: 'couple', budget: 'ultra-luxury' }, label: { en: 'Luxury Culinary Escape', fr: 'Escapade culinaire de luxe', es: 'Escapada culinaria de lujo', ar: 'هروب الطهي الفاخر' } },
+      { state: { interests: ['desert', 'history', 'art'], style: 'photo', duration: '13-18', season: 'spring', travelers: 'small-group', budget: 'luxury' }, label: { en: 'Grand Morocco Photo Tour', fr: 'Tour photo du Grand Maroc', es: 'Tour fotográfico del Gran Marruecos', ar: 'جولة تصوير المغرب الكبير' } }
     ];
     surpriseMeBtn.addEventListener('click', () => {
       var preset = surprisePresets[Math.floor(Math.random() * surprisePresets.length)];
-      document.querySelectorAll('.tb-wizard-step').forEach(function(step, i) {
-        if (preset.steps[i]) {
-          var options = step.querySelectorAll('.tb-option');
-          options.forEach(function(opt) {
-            var val = (opt.dataset.value || opt.textContent.trim()).toLowerCase();
-            if (val.indexOf(preset.steps[i].toLowerCase()) !== -1) {
-              opt.click();
-            }
-          });
-        }
-      });
-      var label = preset.label[lang] || preset.label.en;
-      showToast({ en: 'Surprise! ', fr: 'Surprise! ', es: '¡Sorpresa! ', ar: 'مفاجأة! ' }[lang] + label);
-      var wizard = document.querySelector('.tb-wizard');
+      applyWizard(preset.state);
+      showToast(tr(preset.label));
+      var wizard = document.querySelector('.tb-wizard, .trip-builder');
       if (wizard) wizard.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
